@@ -18,21 +18,12 @@ export default class DatabaseConnection {
     openConnection() {
         this.connection.connect((err) => {
             if(err) {
-                messageLogger('err', err.toString());
+                messageLogger(500, err.stack);
                 return;
             }
-
-            messageLogger('success', 'Connected to Database');
-
-            setInterval(() => {
-                this.connection.ping((error) => {
-                    if(err) {
-                        messageLogger('err', `Cant establish connection to database: ${ process.env.DATABASE_NAME }`);
-                        messageLogger('err', err.stack);
-                        throw err;
-                    }
-                })
-            }, 1000 * 60);
+            
+            messageLogger(200, `Connected to Database on thread#${ this.connection.threadId }`);
+            setInterval(() => this.ping(), 1000 * 60);
         })
     }
 
@@ -42,12 +33,22 @@ export default class DatabaseConnection {
             queryParams,
             (err, rows, fields)  => {
                 if(err) {
-                    messageLogger('err', err.stack);
+                    messageLogger(500, `Query execution error: ${ err.stack }`);
                     throw err;
                 }
 
                 callback(rows);
             }
         )
+    }
+
+    ping() {
+        this.connection.ping((err) => {
+            if(err) {
+                messageLogger(500, `Cant establish connection to database: ${ process.env.DATABASE_NAME }`);
+                messageLogger(500, err.stack);
+                throw err;
+            }
+        })
     }
 }

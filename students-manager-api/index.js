@@ -13,8 +13,8 @@ import {
     facultyNumberParamMiddleware,
 } from './js/middleware.js'
 
-messageLogger('attempt', process.env.API_NAME);
-messageLogger('attempt', process.env.DB_CONNECTOR_NAME);
+messageLogger(100, process.env.API_NAME);
+messageLogger(100, process.env.DB_CONNECTOR_NAME);
 
 dotenv.config();
 const app = express();
@@ -30,7 +30,7 @@ const db = new DatabaseConnection(
 
 app.get('/users/get', authenticateJwt, (req, res) => {
     const { id, fullName, email } = req.user;
-    messageLogger('success', `${ req.route.path } from ${ email }`);
+    messageLogger(200, `${ req.route.path } from ${ email }`);
     res.status(200).json({ id, fullName, email });
 })
 
@@ -44,13 +44,13 @@ app.post('/users/login', loginFormMiddleware, (req, res) => {
 
             bcrypt.compare(password, hashedPassword, (err, same) => {
                 if(err) {
-                    messageLogger('err', err.stack);
+                    messageLogger(500, err.stack);
                     res.status(500).json({ err: 'Internal server problem' });
                     throw err;
                 }
                 else if(same) {
                     const { id, firstName, lastName, email } = rows[0];
-                    messageLogger('success', `Login Authorized: ${ email }`);
+                    messageLogger(200, `Login Authorized: ${ email }`);
                     
                     res.status(200).json({ 
                         jwt: signJwt({
@@ -61,7 +61,7 @@ app.post('/users/login', loginFormMiddleware, (req, res) => {
                     });
                 }
                 else {
-                    messageLogger('warning', 'Email address or Password is incorrect');
+                    messageLogger(400, 'Email address or Password is incorrect');
                     res.status(400).json({ err: 'Email address or Password is incorrect' });
                 }
             })
@@ -70,19 +70,11 @@ app.post('/users/login', loginFormMiddleware, (req, res) => {
 })
 
 app.get('/students/get/all', authenticateJwt, (req, res) => {
-    db.executeQuery(
-        sqlStudents.getAll, 
-        [], 
-        (rows) => res.status(200).json([...rows])
-    );
+    db.executeQuery(sqlStudents.getAll, [], (rows) => res.status(200).json([...rows]));
 })
 
 app.get('/students/get/:facultyNumber', authenticateJwt, facultyNumberParamMiddleware, (req, res) => {
-    db.executeQuery(
-        sqlStudents.getByFacultyNumber, 
-        [req.params.facultyNumber], 
-        (rows) => res.status(200).json([...rows])
-    );
+    db.executeQuery(sqlStudents.getByFacultyNumber, [req.params.facultyNumber], (rows) => res.status(200).json([...rows]));
 })
 
 app.post('/students/create/:facultyNumber', authenticateJwt, facultyNumberParamMiddleware, studentFormMiddleware, (req, res) => {
@@ -91,23 +83,23 @@ app.post('/students/create/:facultyNumber', authenticateJwt, facultyNumberParamM
         [req.params.facultyNumber],
         (rows) => {
             if(rows.length == 0) {
-                const {                             
-                    firstName, lastName, phoneNumber, 
-                    eduDegreeTypeId, eduSpecialtyId, eduFormId, 
-                    eduYear, eduGpa, eduPaused 
-                } = req.body;
-
                 db.executeQuery(
                     sqlStudents.create,
                     [
                         req.params.facultyNumber,
-                        firstName, lastName, phoneNumber, 
-                        eduDegreeTypeId, eduSpecialtyId, eduFormId, 
-                        eduYear, eduGpa, eduPaused 
+                        req.body.firstName, 
+                        req.body.lastName, 
+                        req.body.phoneNumber, 
+                        req.body.eduDegreeTypeId, 
+                        req.body.eduSpecialtyId, 
+                        req.body.eduFormId, 
+                        req.body.eduYear, 
+                        req.body.eduGpa, 
+                        req.body.eduPaused 
                     ],
                     (rows) => {
                         if(rows.insertId) {
-                            messageLogger('success', `New student created at: [${ rows.insertId }]: ${ req.params.facultyNumber }`);
+                            messageLogger(200, `New student created at: [${ rows.insertId }]: ${ req.params.facultyNumber }`);
                             res.status(201).json({});
                         }
                         else
@@ -116,7 +108,7 @@ app.post('/students/create/:facultyNumber', authenticateJwt, facultyNumberParamM
                 )
             }             
             else {
-                messageLogger('warning', 'Student with this faculty number already exists');
+                messageLogger(400, 'Student with this faculty number already exists');
                 res.status(403).json({ err: 'Student with this faculty number already exists'});
             }
         }
@@ -124,23 +116,23 @@ app.post('/students/create/:facultyNumber', authenticateJwt, facultyNumberParamM
 })
 
 app.post('/students/update/:facultyNumber', authenticateJwt, facultyNumberParamMiddleware, studentFormMiddleware, (req, res) => {
-    const {                             
-        firstName, lastName, phoneNumber, 
-        eduDegreeTypeId, eduSpecialtyId, eduFormId, 
-        eduYear, eduGpa, eduPaused 
-    } = req.body;
-
     db.executeQuery(
         sqlStudents.update,
         [
-            firstName, lastName, phoneNumber, 
-            eduDegreeTypeId, eduSpecialtyId, eduFormId, 
-            eduYear, eduGpa, eduPaused,
+            req.body.firstName, 
+            req.body.lastName, 
+            req.body.phoneNumber, 
+            req.body.eduDegreeTypeId, 
+            req.body.eduSpecialtyId, 
+            req.body.eduFormId, 
+            req.body.eduYear, 
+            req.body.eduGpa, 
+            req.body.eduPaused,
             req.params.facultyNumber
         ],
         (rows) => {
             if(rows.affectedRows) {
-                messageLogger('success', `Student update at: ${ req.params.facultyNumber }`);
+                messageLogger(200, `Student update at: ${ req.params.facultyNumber }`);
                 res.status(201).json({});
             }
             else
@@ -175,5 +167,5 @@ app.get('/edu/get/forms', authenticateJwt, (req, res) => {
 })
 
 app.listen(process.env.PORT, () => {
-    messageLogger('success', `StudentsManagerAPI running on http://${ process.env.DATABASE_HOST }:${ process.env.PORT }`);
+    messageLogger(200, `StudentsManagerAPI running on http://${ process.env.DATABASE_HOST }:${ process.env.PORT }`);
 })

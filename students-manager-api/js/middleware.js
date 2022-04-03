@@ -10,11 +10,11 @@ const registerFormMiddleware = (req, res, next) => {
     if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.password || !req.body.isAdmin || 
         (!emailRegex.test(req.body.email) || !passwordRegex.test(req.body.password))) 
     {
-        consoleMessage('warning', 'Bad body request');
+        consoleMessage(400, 'Bad body request');
         return res.status(400).json({ err: 'Bad body request' });
     }
 
-    messageLogger('success', `Validated register form[${ req.body.email }]`);
+    messageLogger(200, `Validated register form[${ req.body.email }]`);
     next();
 }
 
@@ -23,11 +23,11 @@ const loginFormMiddleware = (req, res, next) => {
     if(!req.body.email || !req.body.password || 
         (!emailRegex.test(req.body.email) || !passwordRegex.test(req.body.password)))
     {
-        messageLogger('warning', 'Bad body request');
+        messageLogger(400, 'Bad body request');
         return res.status(400).json({ err: 'Bad request' });
     }
 
-        messageLogger('success', `Validated login form[${ req.body.email }]`);
+        messageLogger(200, `Validated login form[${ req.body.email }]`);
         next();
 }
 
@@ -37,7 +37,7 @@ const studentFormMiddleware = (req, res, next) => {
         !req.body.eduDegreeTypeId || !req.body.eduSpecialtyId || !req.body.eduFormId ||
         !req.body.eduYear || !req.body.eduGpa || !req.body.eduPaused
     ) {
-        messageLogger('warning', 'Bad body request');
+        messageLogger(400, 'Bad body request');
         return res.status(400).json({ err: 'Bad request' });
     }
 
@@ -46,11 +46,11 @@ const studentFormMiddleware = (req, res, next) => {
 
 const facultyNumberParamMiddleware = (req, res, next) => {
     if(!req.params.facultyNumber || !facultyNumberRegex.test(req.params.facultyNumber)) {
-        messageLogger('warning', 'Bad body request');
+        messageLogger(400, 'Bad body request');
         return res.status(400).json({ err: 'Bad request' });
     }
 
-    messageLogger('success', `Validated id[${ req.params.facultyNumber }]`);
+    messageLogger(200, `Validated id[${ req.params.facultyNumber }]`);
     next();
 }
 

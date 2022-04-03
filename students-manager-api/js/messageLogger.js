@@ -1,26 +1,24 @@
-const messageLogger = (statusCode, messageToSend) => {
+export default function messageLogger (statusCode, messageToSend) {
     const timeOfExecution = new Date().toLocaleTimeString();
-    let formatedMessage;
+    let messagePrefix;
 
     switch(statusCode) {
-        case 'success': 
-            formatedMessage = `\x1b[42m SUCCESS \x1b[0m${ messageToSend }`; 
+        case 100:
+            messagePrefix = `\x1b[44m INFO`; 
             break;
-        case 'err': 
-            formatedMessage = `\x1b[41m ERROR \x1b[0m${ messageToSend }`; 
+        case 200: 
+            messagePrefix = `\x1b[42m SUCCESS`; 
             break;
-        case 'warning': 
-            formatedMessage = `\x1b[43m\x1b[30m WARNING \x1b[0m${ messageToSend }`; 
+        case 400:
+            messagePrefix = `\x1b[43m\x1b[30m CLIENT-ERROR`; 
             break;
-        case 'attempt': 
-            formatedMessage = `\x1b[44m ATTEMPT \x1b[0m${ messageToSend }...`; 
+        case 500:
+            messagePrefix = `\x1b[41m SERVER-ERROR`; 
             break;
         default: 
-            formatedMessage = `\x1b[47m MESSAGE \x1b[0m${ messageToSend }`; 
+            messagePrefix = `\x1b[47m MESSAGE`; 
             break;
     }
 
-    console.log(`\x1b[2m[${ timeOfExecution }]\x1b[0m${ formatedMessage }`);
+    console.log(`\x1b[2m[${ timeOfExecution }]\x1b[0m ${ messagePrefix } \x1b[0m ${ messageToSend }`);
 }
-
-export default messageLogger;
