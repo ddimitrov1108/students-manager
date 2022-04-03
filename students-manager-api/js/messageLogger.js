@@ -9,8 +9,8 @@ export default function messageLogger (statusCode, messageToSend) {
         case 200: 
             messagePrefix = `\x1b[42m SUCCESS`; 
             break;
-        case 400:
-            messagePrefix = `\x1b[43m\x1b[30m CLIENT-ERROR`; 
+        case 400: 
+            messagePrefix = `\x1b[43m CLIENT-ERROR`; 
             break;
         case 500:
             messagePrefix = `\x1b[41m SERVER-ERROR`; 
@@ -20,5 +20,5 @@ export default function messageLogger (statusCode, messageToSend) {
             break;
     }
 
-    console.log(`\x1b[2m[${ timeOfExecution }]\x1b[0m ${ messagePrefix } \x1b[0m ${ messageToSend }`);
+    console.log(`\x1b[2m[${ timeOfExecution }]\x1b[0m\x1b[30m ${ messagePrefix } \x1b[0m ${ messageToSend }`);
 }
