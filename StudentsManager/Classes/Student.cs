@@ -113,8 +113,6 @@ namespace StudentsManager.Classes
 
         public int create(MySqlConnection connection, int degreeId, int specialtyId, int formId)
         {
-            int executed = 0;
-
             try
             {
                 this.command = connection.CreateCommand();
@@ -133,13 +131,12 @@ namespace StudentsManager.Classes
                     new MySqlParameter("?gpa", this.gpa),
                     new MySqlParameter("?edup", this.isEducationPaused)
                 });
-
-                executed = this.command.ExecuteNonQuery();
+                this.command.ExecuteNonQuery();
             }
             catch (MySqlException error)
             {
                 MessageBox.Show(error.Message, "Database Error");
-                Application.Exit();
+                return 0;
             }
             finally
             {
@@ -147,13 +144,11 @@ namespace StudentsManager.Classes
                 this.reader = null;
             }
 
-            return executed;
+            return 1;
         }
 
         public int read(MySqlConnection connection)
         {
-            int executed = 0;
-
             try
             {
                 this.command = connection.CreateCommand();
@@ -172,7 +167,7 @@ namespace StudentsManager.Classes
                 this.reader = command.ExecuteReader();
                 this.reader.Read();
 
-                if(this.reader.HasRows)
+                if (this.reader.HasRows)
                 {
                     this.facultyNumber = reader.GetString("facultyNumber");
                     this.firstName = reader.GetString("firstName");
@@ -184,13 +179,14 @@ namespace StudentsManager.Classes
                     this.year = reader.GetInt32("year");
                     this.gpa = reader.GetDouble("gpa");
                     this.isEducationPaused = reader.GetBoolean("EduPaused");
-                    executed = 1;
                 }
+                else
+                    return 0;
             }
             catch (MySqlException error)
             {
                 MessageBox.Show(error.Message, "Database Error");
-                Application.Exit();
+                return 0;
             }
             finally
             {
@@ -198,13 +194,11 @@ namespace StudentsManager.Classes
                 this.reader = null;
             }
 
-            return executed;
+            return 1;
         }
 
         public int update(MySqlConnection connection, int degreeId, int specialtyId, int formId)
         {
-            int executed = 0;
-
             try
             {
                 this.command = connection.CreateCommand();
@@ -234,44 +228,41 @@ namespace StudentsManager.Classes
                     new MySqlParameter("?edup", this.isEducationPaused),
                     new MySqlParameter("?facNum", this.facultyNumber)
                 });
-
-                executed = this.command.ExecuteNonQuery();
+                this.command.ExecuteNonQuery();
             }
             catch(MySqlException error)
             {
                 MessageBox.Show(error.Message, "Database Error");
-                Application.Exit();
+                return 0;
             }
             finally
             {
                 this.command = null;
             }
 
-            return executed;
+            return 1;
         }
 
         public int delete(MySqlConnection connection)
         {
-            int executed = 0;
-
             try
             {
                 this.command = connection.CreateCommand();
                 this.command.CommandText = "DELETE FROM students WHERE facultyNumber = `?facNum`";
                 this.command.Parameters.AddWithValue("?facNum", this.facultyNumber);
-                executed = this.command.ExecuteNonQuery();
+                this.command.ExecuteNonQuery();
             }
             catch(MySqlException error)
             {
                 MessageBox.Show(error.Message, "Database Error");
-                Application.Exit();
+                return 0;
             }
             finally
             {
                 this.command = null;
             }
 
-            return executed;
+            return 1;
         }
 
     }
