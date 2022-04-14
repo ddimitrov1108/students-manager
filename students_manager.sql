@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- База данни: `students_manager`
 --
-
+drop database if exists students_manager;
+create database students_manager;
 use students_manager;
 
 -- --------------------------------------------------------
