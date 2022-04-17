@@ -13,7 +13,6 @@ namespace StudentsManager.Classes
         public int read(MySqlConnection connection);
         public int update(MySqlConnection connection, int degreeId, int specialtyId, int formId);
         public int delete(MySqlConnection connection);
-
     }
     public class Student : IStudentDatabaseQueries
     {
@@ -35,7 +34,7 @@ namespace StudentsManager.Classes
             this.formType = "";
             this.gpa = 0.0;
             this.year = 0;
-            this.isEducationPaused = true;
+            this.isEducationPaused = false;
         }
 
         public Student(Student studentObject)
@@ -156,21 +155,21 @@ namespace StudentsManager.Classes
                         "WHERE facultyNumber = `?facNum` LIMIT 1";
 
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);
-                    MySqlDataReader dr = cmd.ExecuteReader();
-                    dr.Read();
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    dataReader.Read();
 
-                    if (dr.HasRows)
+                    if (dataReader.HasRows)
                     {
-                        this.facultyNumber = dr.GetString("facultyNumber");
-                        this.firstName = dr.GetString("firstName");
-                        this.lastName = dr.GetString("lastName");
-                        this.phoneNumber = dr.GetString("phoneNumber");
-                        this.degreeType = dr.GetString("degree");
-                        this.specialtyName = dr.GetString("specialty");
-                        this.formType = dr.GetString("form");
-                        this.year = dr.GetInt32("year");
-                        this.gpa = dr.GetDouble("gpa");
-                        this.isEducationPaused = dr.GetBoolean("EduPaused");
+                        this.facultyNumber = dataReader.GetString("facultyNumber");
+                        this.firstName = dataReader.GetString("firstName");
+                        this.lastName = dataReader.GetString("lastName");
+                        this.phoneNumber = dataReader.GetString("phoneNumber");
+                        this.degreeType = dataReader.GetString("degree");
+                        this.specialtyName = dataReader.GetString("specialty");
+                        this.formType = dataReader.GetString("form");
+                        this.year = dataReader.GetInt32("year");
+                        this.gpa = dataReader.GetDouble("gpa");
+                        this.isEducationPaused = dataReader.GetBoolean("EduPaused");
                         return 1;
                     }
                     else

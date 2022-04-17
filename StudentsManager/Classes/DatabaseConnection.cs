@@ -10,8 +10,6 @@ namespace StudentsManager.Classes
     public class DatabaseConnection
     {
         private MySqlConnection? connection = null;
-        private MySqlCommand? command = null;
-        private MySqlDataReader? reader = null;
 
         public DatabaseConnection()
         {
@@ -42,9 +40,27 @@ namespace StudentsManager.Classes
             connection = null;
         }
 
-        public void ExecuteQuery(string queryString, MySqlParameter[] paramsArray)
+        public MySqlDataReader? ExecuteQuery(string queryString, MySqlParameter[] paramsArray)
         {
-
+            if (this.connection != null)
+            {
+                try
+                {
+                    using (MySqlCommand cmd = this.connection.CreateCommand())
+                    {
+                        cmd.CommandText = queryString;
+                        cmd.Parameters.AddRange(paramsArray);
+                        return cmd.ExecuteReader();
+                    }
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show(error.Message, "Database Error");
+                    return null;
+                }
+            }
+            else
+                return null;
         }
 
         public MySqlConnection Connection { get; }
