@@ -20,6 +20,14 @@ namespace StudentsManager.Classes
             email = "";
             isAdmin = false;
         }
+
+        public User(int _id, string _name, string _email, bool _isAdmin)
+        {
+            this.id = _id;
+            this.name = _name;
+            this.email = _email;
+            this.isAdmin = _isAdmin;
+        }
         public int Id { get; set; }
         public string Name { get; set; }
 

@@ -35,10 +35,7 @@ namespace StudentsManager.Classes
             }
         }
 
-        public void endConnection()
-        {
-            connection = null;
-        }
+        public void endConnection() => this.connection = null;
 
         public MySqlDataReader? ExecuteQuery(string queryString, MySqlParameter[] paramsArray)
         {
