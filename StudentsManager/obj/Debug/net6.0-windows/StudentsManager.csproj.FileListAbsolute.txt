@@ -44,3 +44,13 @@ C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.pdb
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.genruntimeconfig.cache
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\ref\StudentsManager.dll
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Form1.resources
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.csproj.GenerateResource.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.AssemblyInfo.cs
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.dll
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\ref\StudentsManager.dll
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.pdb

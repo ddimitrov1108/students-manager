@@ -37,7 +37,7 @@ namespace StudentsManager.Classes
 
         public void endConnection() => this.connection = null;
 
-        public MySqlDataReader? ExecuteQuery(string queryString, MySqlParameter[] paramsArray)
+        public MySqlDataReader? ExecuteQuery(string queryString, MySqlParameter[]? paramsArray = null)
         {
             if (this.connection != null)
             {
@@ -46,7 +46,10 @@ namespace StudentsManager.Classes
                     using (MySqlCommand cmd = this.connection.CreateCommand())
                     {
                         cmd.CommandText = queryString;
-                        cmd.Parameters.AddRange(paramsArray);
+
+                        if(paramsArray != null)
+                            cmd.Parameters.AddRange(paramsArray);
+
                         return cmd.ExecuteReader();
                     }
                 }
@@ -58,9 +61,9 @@ namespace StudentsManager.Classes
             }
             
             return null;
-        }        
-        
-        public int ExecuteNonQuery(string queryString, MySqlParameter[] paramsArray)
+        }
+
+        public int ExecuteNonQuery(string queryString, MySqlParameter[]? paramsArray = null)
         {
             if (this.connection != null)
             {
@@ -69,7 +72,10 @@ namespace StudentsManager.Classes
                     using (MySqlCommand cmd = this.connection.CreateCommand())
                     {
                         cmd.CommandText = queryString;
-                        cmd.Parameters.AddRange(paramsArray);
+
+                        if(paramsArray != null)
+                            cmd.Parameters.AddRange(paramsArray);
+
                         return cmd.ExecuteNonQuery();
                     }
                 }

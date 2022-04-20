@@ -1,0 +1,7 @@
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.Form1.resources
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.csproj.GenerateResource.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.AssemblyInfo.cs
+C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net5.0-windows\StudentsManager.csproj.CoreCompileInputs.cache
