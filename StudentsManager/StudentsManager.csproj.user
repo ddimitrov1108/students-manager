@@ -7,17 +7,5 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-=======
-  <ItemGroup>
-    <Compile Update="Components\CustomInput.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Update="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\LoginAuthForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
->>>>>>> Stashed changes
   </ItemGroup>
 </Project>
