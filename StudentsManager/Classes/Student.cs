@@ -14,8 +14,8 @@ namespace StudentsManager.Classes
         private string facultyNumber;
         private string firstName, lastName, phoneNumber;
         private string degreeType, specialtyName, formType;
-        private double gpa;
         private int year;
+        private double gpa;
         private bool educationPaused;
 
         public Student()
@@ -27,8 +27,8 @@ namespace StudentsManager.Classes
             this.degreeType = "";
             this.specialtyName = "";
             this.formType = "";
-            this.gpa = 0.0;
             this.year = 0;
+            this.gpa = 0.0;
             this.educationPaused = false;
         }
 
@@ -44,12 +44,12 @@ namespace StudentsManager.Classes
             this.degreeType = studentObject.degreeType;
             this.specialtyName = studentObject.specialtyName;
             this.formType = studentObject.formType;
-            this.gpa = studentObject.gpa;
             this.year = studentObject.year;
+            this.gpa = studentObject.gpa;
             this.educationPaused = studentObject.educationPaused;
         }
 
-        public Student(string _facNum, string _fn, string _ln, string _phoneNum, string _degreeType, string _specName, string _formType, double _gpa, int _year, bool _eduPaused)
+        public Student(string _facNum, string _fn, string _ln, string _phoneNum, string _degreeType, string _specName, string _formType, int _year, double _gpa, bool _eduPaused)
         {
             this.facultyNumber = _facNum;
             this.firstName = _fn;
@@ -58,21 +58,21 @@ namespace StudentsManager.Classes
             this.degreeType = _degreeType;
             this.specialtyName = _specName;
             this.formType = _formType;
-            this.gpa = _gpa;
             this.year = _year;
+            this.gpa = _gpa;
             this.educationPaused = _eduPaused;
         }
 
         public string FullName { get => $"{ this.firstName } { this.lastName }"; }
-        public string FacultyNumber { get; }
+        public string FacultyNumber { get => this.facultyNumber; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public string DegreeType { get; set; }
         public string SpecialtyName { get; set; }
         public string FormType { get; set; }
-        public double Gpa { get; set; }
         public int Year { get; set; }
+        public double Gpa { get; set; }
         public bool EducationPaused { get; set; }
 
         public override string ToString()
@@ -84,8 +84,8 @@ namespace StudentsManager.Classes
                 $"degree: { this.degreeType }, " +
                 $"specialty: { this.specialtyName }, " +
                 $"form: { this.formType }, " +
-                $"gpa: { this.gpa }, " +
                 $"year: { this.year }, " +
+                $"gpa: { this.gpa }, " +
                 $"eduPaused: { this.educationPaused.ToString() } " + "}";
         }
         public int CompareTo(Student? studentObject) => 
@@ -100,8 +100,9 @@ namespace StudentsManager.Classes
             {
                 using (MySqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "INSERT INTO students VALUES(null, `?facNum`, `?fn`, `?ln`, `?phn`, ?dtid, ?snid, ?ftid, ?year, ?gpa, ?edup, default, default)";
-                    cmd.Parameters.AddRange(new MySqlParameter[] {
+                    cmd.CommandText = "INSERT INTO students VALUES(null, ?facNum, ?fn, ?ln, ?phn, ?dtid, ?snid, ?ftid, ?year, ?gpa, ?edup, default, default)";
+                    cmd.Parameters.AddRange(new MySqlParameter[] 
+                    {
                         new MySqlParameter("?facNum", this.facultyNumber),
                         new MySqlParameter("?fn", this.firstName),
                         new MySqlParameter("?ln", this.lastName),
@@ -119,7 +120,7 @@ namespace StudentsManager.Classes
             }
             catch (MySqlException error)
             {
-                MessageBox.Show(error.Message, "Database Error");
+                 MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -128,18 +129,23 @@ namespace StudentsManager.Classes
         {
             try
             {
+                if(connection == null)
+                {
+                    MessageBox.Show("no connection");
+                    return 0;
+                }
                 using (MySqlCommand cmd = connection.CreateCommand())
                 {
                     cmd.CommandText =
-                        "SELECT " +
-                            "facultyNumber, firstName, lastName, phoneNumber," +
-                            "edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
-                            "year, gpa,eduPaused" +
-                        "FROM students" +
-                            "INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
-                            "INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
-                            "INNER JOIN edu_forms ON students.formId = edu_forms.id" +
-                        "WHERE facultyNumber = `?facNum` LIMIT 1";
+                        "SELECT" +
+                            " facultyNumber, firstName, lastName, phoneNumber," +
+                            " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
+                            " year, gpa, eduPaused" +
+                        " FROM students" +
+                            " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
+                            " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
+                            " INNER JOIN edu_forms ON students.formId = edu_forms.id" +
+                        " WHERE facultyNumber = ?facNum LIMIT 1";
 
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);
                     MySqlDataReader dataReader = cmd.ExecuteReader();
@@ -157,6 +163,7 @@ namespace StudentsManager.Classes
                         this.year = dataReader.GetInt32("year");
                         this.gpa = dataReader.GetDouble("gpa");
                         this.educationPaused = dataReader.GetBoolean("EduPaused");
+                        dataReader.Close();
                         return 1;
                     }
                     
@@ -165,7 +172,7 @@ namespace StudentsManager.Classes
             }
             catch (MySqlException error)
             {
-                MessageBox.Show(error.Message, "Database Error");
+                MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -178,19 +185,20 @@ namespace StudentsManager.Classes
                 {
                     cmd.CommandText =
                         "UPDATE students SET" +
-                            "firstName = `?fn`," +
-                            "lastName = `?ln`," +
-                            "phoneNumber = `?phn`," +
-                            "degreeId = ?dtid," +
-                            "specialtyId = ?snid," +
-                            "formId = ?ftid," +
-                            "year = ?year," +
-                            "gpa = ?gpa," +
-                            "eduPaused = ? edup," +
-                            "updated_at = now()" +
-                        "WHERE facultyNumber = `?facNum`";
+                            " firstName = ?fn," +
+                            " lastName = ?ln," +
+                            " phoneNumber = ?phn," +
+                            " degreeId = ?dtid," +
+                            " specialtyId = ?snid," +
+                            " formId = ?ftid," +
+                            " year = ?year," +
+                            " gpa = ?gpa," +
+                            " eduPaused = ? edup," +
+                            " updated_at = now()" +
+                        " WHERE facultyNumber = ?facNum";
 
-                    cmd.Parameters.AddRange(new MySqlParameter[] {
+                    cmd.Parameters.AddRange(new MySqlParameter[] 
+                    {
                         new MySqlParameter("?fn", this.firstName),
                         new MySqlParameter("?ln", this.lastName),
                         new MySqlParameter("?phn", this.phoneNumber),
@@ -208,7 +216,7 @@ namespace StudentsManager.Classes
             }
             catch(MySqlException error)
             {
-                MessageBox.Show(error.Message, "Database Error");
+                 MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -219,7 +227,7 @@ namespace StudentsManager.Classes
             {
                 using (MySqlCommand cmd = connection.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM students WHERE facultyNumber = `?facNum`";
+                    cmd.CommandText = "DELETE FROM students WHERE facultyNumber = ?facNum";
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);
                     return cmd.ExecuteNonQuery();
                 }
@@ -227,7 +235,7 @@ namespace StudentsManager.Classes
             }
             catch(MySqlException error)
             {
-                MessageBox.Show(error.Message, "Database Error");
+                MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
