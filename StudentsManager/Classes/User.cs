@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StudentsManager.Classes
+﻿namespace StudentsManager.Classes
 {
     public class User
     {
@@ -28,9 +22,10 @@ namespace StudentsManager.Classes
             this.email = _email;
             this.isAdmin = _isAdmin;
         }
-        public int Id { get; set; }
-        public string Name { get; set; }
 
-        public string Email { get; set; }
+        public int Id { get; }
+        public string Name { get; }
+        public string Email { get; }
+        public bool IsAdmin { get; }
     }
 }

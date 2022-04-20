@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace StudentsManager.Classes
 {
-    public interface IStudentDatabaseQueries
+    public interface IStudentCRUD
     {
-        public int create(MySqlConnection connection, int degreeId, int specialtyId, int formId);
-        public int read(MySqlConnection connection);
-        public int update(MySqlConnection connection, int degreeId, int specialtyId, int formId);
-        public int delete(MySqlConnection connection);
+        int Create(MySqlConnection connection, int degreeId, int specialtyId, int formId);
+        int Read(MySqlConnection connection);
+        int Update(MySqlConnection connection, int degreeId, int specialtyId, int formId);
+        int Delete(MySqlConnection connection);
     }
-    public class Student : IStudentDatabaseQueries
+    public class Student : IStudentCRUD, IComparable<Student>
     {
         private string facultyNumber;
         private string firstName, lastName, phoneNumber;
         private string degreeType, specialtyName, formType;
         private double gpa;
         private int year;
-        private bool isEducationPaused;
+        private bool educationPaused;
 
         public Student()
         {
@@ -34,8 +29,11 @@ namespace StudentsManager.Classes
             this.formType = "";
             this.gpa = 0.0;
             this.year = 0;
-            this.isEducationPaused = false;
+            this.educationPaused = false;
         }
+
+        public Student(string _facNum) =>
+            this.facultyNumber = _facNum;
 
         public Student(Student studentObject)
         {
@@ -48,10 +46,10 @@ namespace StudentsManager.Classes
             this.formType = studentObject.formType;
             this.gpa = studentObject.gpa;
             this.year = studentObject.year;
-            this.isEducationPaused = studentObject.isEducationPaused;
+            this.educationPaused = studentObject.educationPaused;
         }
 
-        public Student(string _facNum, string _fn, string _ln, string _phoneNum, string _degreeType, string _specName, string _formType, double _gpa, int _year, bool _isEduPaused)
+        public Student(string _facNum, string _fn, string _ln, string _phoneNum, string _degreeType, string _specName, string _formType, double _gpa, int _year, bool _eduPaused)
         {
             this.facultyNumber = _facNum;
             this.firstName = _fn;
@@ -62,7 +60,7 @@ namespace StudentsManager.Classes
             this.formType = _formType;
             this.gpa = _gpa;
             this.year = _year;
-            this.isEducationPaused = _isEduPaused;
+            this.educationPaused = _eduPaused;
         }
 
         public string FullName { get => $"{ this.firstName } { this.lastName }"; }
@@ -75,7 +73,7 @@ namespace StudentsManager.Classes
         public string FormType { get; set; }
         public double Gpa { get; set; }
         public int Year { get; set; }
-        public bool IsEducationPaused { get; set; }
+        public bool EducationPaused { get; set; }
 
         public override string ToString()
         {
@@ -88,26 +86,15 @@ namespace StudentsManager.Classes
                 $"form: { this.formType }, " +
                 $"gpa: { this.gpa }, " +
                 $"year: { this.year }, " +
-                $"eduPaused: { this.isEducationPaused.ToString() } " + "}";
+                $"eduPaused: { this.educationPaused.ToString() } " + "}";
         }
-        public int CompareTo(Student? studentObject)
-        {
-            if (studentObject == null)
-                return 1;
-            else
-                return this.facultyNumber.CompareTo(studentObject.facultyNumber);
-        }
+        public int CompareTo(Student? studentObject) => 
+            studentObject == null ? 1 : this.facultyNumber.CompareTo(studentObject.facultyNumber);
 
-        public override bool Equals(Object? obj)
-        {
-            if (obj == null || !this.GetType().Equals(obj.GetType()))
-                return false;
+        public override bool Equals(Object? obj) =>
+            obj == null || !this.GetType().Equals(obj.GetType()) ? false : this.facultyNumber.CompareTo(((Student) obj).facultyNumber) == 0;
 
-            Student stud = (Student)obj;
-            return this.facultyNumber.CompareTo(stud.facultyNumber) == 0;
-        }
-
-        public int create(MySqlConnection connection, int degreeId, int specialtyId, int formId)
+        public int Create(MySqlConnection connection, int degreeId, int specialtyId, int formId)
         {
             try
             {
@@ -124,7 +111,7 @@ namespace StudentsManager.Classes
                         new MySqlParameter("?ftid", formId),
                         new MySqlParameter("?year", this.year),
                         new MySqlParameter("?gpa", this.gpa),
-                        new MySqlParameter("?edup", this.isEducationPaused)
+                        new MySqlParameter("?edup", this.educationPaused)
                     });
 
                     return cmd.ExecuteNonQuery();
@@ -137,7 +124,7 @@ namespace StudentsManager.Classes
             }
         }
 
-        public int read(MySqlConnection connection)
+        public int Read(MySqlConnection connection)
         {
             try
             {
@@ -169,11 +156,11 @@ namespace StudentsManager.Classes
                         this.formType = dataReader.GetString("form");
                         this.year = dataReader.GetInt32("year");
                         this.gpa = dataReader.GetDouble("gpa");
-                        this.isEducationPaused = dataReader.GetBoolean("EduPaused");
+                        this.educationPaused = dataReader.GetBoolean("EduPaused");
                         return 1;
                     }
-                    else
-                        return 0;
+                    
+                    return 0;
                 } 
             }
             catch (MySqlException error)
@@ -183,7 +170,7 @@ namespace StudentsManager.Classes
             }
         }
 
-        public int update(MySqlConnection connection, int degreeId, int specialtyId, int formId)
+        public int Update(MySqlConnection connection, int degreeId, int specialtyId, int formId)
         {
             try
             {
@@ -212,7 +199,7 @@ namespace StudentsManager.Classes
                         new MySqlParameter("?ftid", formId),
                         new MySqlParameter("?year", this.year),
                         new MySqlParameter("?gpa", this.gpa),
-                        new MySqlParameter("?edup", this.isEducationPaused),
+                        new MySqlParameter("?edup", this.educationPaused),
                         new MySqlParameter("?facNum", this.facultyNumber)
                     });
 
@@ -226,7 +213,7 @@ namespace StudentsManager.Classes
             }
         }
 
-        public int delete(MySqlConnection connection)
+        public int Delete(MySqlConnection connection)
         {
             try
             {
@@ -243,6 +230,11 @@ namespace StudentsManager.Classes
                 MessageBox.Show(error.Message, "Database Error");
                 return 0;
             }
+        }
+
+        public override int GetHashCode()
+        {
+            throw new NotImplementedException();
         }
     }
 }

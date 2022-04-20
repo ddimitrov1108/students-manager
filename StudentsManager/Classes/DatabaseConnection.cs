@@ -56,9 +56,34 @@ namespace StudentsManager.Classes
                     return null;
                 }
             }
-            else
-                return null;
+            
+            return null;
+        }        
+        
+        public int ExecuteNonQuery(string queryString, MySqlParameter[] paramsArray)
+        {
+            if (this.connection != null)
+            {
+                try
+                {
+                    using (MySqlCommand cmd = this.connection.CreateCommand())
+                    {
+                        cmd.CommandText = queryString;
+                        cmd.Parameters.AddRange(paramsArray);
+                        return cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (MySqlException error)
+                {
+                    MessageBox.Show(error.Message, "Database Error");
+                    return 0;
+                }
+            }
+            
+            return 0;
         }
+
+
 
         public MySqlConnection Connection { get; }
     }
