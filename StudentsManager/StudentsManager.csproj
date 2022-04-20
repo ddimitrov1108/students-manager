@@ -9,11 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Forms\" />
-    <Folder Include="Components\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="bin\Debug\net6.0-windows\.env" />
   </ItemGroup>
 
