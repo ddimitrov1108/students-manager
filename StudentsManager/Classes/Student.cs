@@ -88,6 +88,7 @@ namespace StudentsManager.Classes
                 $"gpa: { this.gpa }, " +
                 $"eduPaused: { this.educationPaused.ToString() } " + "}";
         }
+        
         public int CompareTo(Student? studentObject) => 
             studentObject == null ? 1 : this.facultyNumber.CompareTo(studentObject.facultyNumber);
 
@@ -149,9 +150,8 @@ namespace StudentsManager.Classes
 
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);
                     MySqlDataReader dataReader = cmd.ExecuteReader();
-                    dataReader.Read();
 
-                    if (dataReader.HasRows)
+                    if (dataReader.Read() && dataReader.HasRows)
                     {
                         this.facultyNumber = dataReader.GetString("facultyNumber");
                         this.firstName = dataReader.GetString("firstName");
@@ -240,9 +240,6 @@ namespace StudentsManager.Classes
             }
         }
 
-        public override int GetHashCode()
-        {
-            throw new NotImplementedException();
-        }
+        public override int GetHashCode() => throw new NotImplementedException();
     }
 }

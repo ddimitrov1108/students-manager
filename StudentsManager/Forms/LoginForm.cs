@@ -1,12 +1,16 @@
 ﻿using MySql.Data.MySqlClient;
 using StudentsManager.Classes;
 using System.Media;
+using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace StudentsManager.Forms
 {
     public partial class LoginForm : Form
     {
         MySqlConnection db;
+
+        private Regex emailRegex = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
         public LoginForm(MySqlConnection connection)
         {
@@ -15,36 +19,48 @@ namespace StudentsManager.Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(emailInput.Text))
+            if(!string.IsNullOrWhiteSpace(EmailInput.Value) && !string.IsNullOrWhiteSpace(PasswordInput.Value))
             {
-                try
+                if(emailRegex.IsMatch(EmailInput.Value) && 
+                    (new Regex(@"[0-9]+").IsMatch(PasswordInput.Value) && new Regex(@".{6,}").IsMatch(PasswordInput.Value)))
                 {
                     using (MySqlCommand cmd = db.CreateCommand())
                     {
-
                         cmd.CommandText = "SELECT * FROM users WHERE email = ?email LIMIT 1";
-                        cmd.Parameters.AddRange(new MySqlParameter[]
-                        {
-                        new MySqlParameter("?email", emailInput.Text)
-                        });
+                        cmd.Parameters.AddWithValue("?email", EmailInput.Value);
+                        MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                        MySqlDataReader dr = cmd.ExecuteReader();
-                        dr.Read();
-
-                        if (dr.HasRows)
+                        if(dataReader.Read() && dataReader.HasRows)
                         {
-                            if(BCrypt.Net.BCrypt.Verify(passwordInput.Text, dr.GetString("password")))
+                            if(BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
+                            {
                                 MessageBox.Show("Verified!");
+                                LoginFormErrorLabel.Visible = false;
+                            }
+                            else
+                            {
+                                LoginFormErrorLabel.Text = "Email or password is incorrect";
+                                LoginFormErrorLabel.Visible = true;
+                                SystemSounds.Beep.Play();
+                            }
+                        }
+                        else
+                        {
+                            LoginFormErrorLabel.Text = "No account associated with this email";
+                            LoginFormErrorLabel.Visible = true;
+                            SystemSounds.Beep.Play();
                         }
 
-                        dr.Close();
+                        dataReader.Close();
                     }
                 }
-                catch (MySqlException error)
+                else
                 {
-                    throw error;
+                    LoginFormErrorLabel.Text = "Email or password is invalid";
+                    LoginFormErrorLabel.Visible = true;
+                    SystemSounds.Beep.Play();
                 }
             }
             else
