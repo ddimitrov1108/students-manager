@@ -15,7 +15,6 @@ C:\Users\ddimi\Desktop\students_manager\StudentsManager\bin\Debug\net6.0-windows
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\bin\Debug\net6.0-windows\ZstdNet.dll
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\bin\Debug\net6.0-windows\Sprache.dll
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.csproj.AssemblyReference.cache
-C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Form1.resources
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.csproj.GenerateResource.cache
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.AssemblyInfoInputs.cache

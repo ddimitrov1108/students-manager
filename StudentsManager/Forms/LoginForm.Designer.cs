@@ -111,7 +111,7 @@
             this.LoginFormErrorLabel.Size = new System.Drawing.Size(261, 47);
             this.LoginFormErrorLabel.TabIndex = 8;
             this.LoginFormErrorLabel.Text = "Email or Password is invalid";
-            this.LoginFormErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LoginFormErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoginFormErrorLabel.Visible = false;
             // 
             // LoginForm
