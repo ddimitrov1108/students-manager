@@ -119,9 +119,9 @@ namespace StudentsManager.Classes
                     return cmd.ExecuteNonQuery();
                 }
             }
-            catch (MySqlException error)
+            catch (MySqlException ex)
             {
-                 MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -171,9 +171,9 @@ namespace StudentsManager.Classes
                     return 0;
                 } 
             }
-            catch (MySqlException error)
+            catch (MySqlException ex)
             {
-                MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -215,9 +215,9 @@ namespace StudentsManager.Classes
                     return cmd.ExecuteNonQuery();
                 }
             }
-            catch(MySqlException error)
+            catch(MySqlException ex)
             {
-                 MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -234,9 +234,9 @@ namespace StudentsManager.Classes
                 }
                     
             }
-            catch(MySqlException error)
+            catch(MySqlException ex)
             {
-                MessageBox.Show(error.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }

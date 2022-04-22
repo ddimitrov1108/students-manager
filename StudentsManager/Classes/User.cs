@@ -23,9 +23,9 @@
             this.isAdmin = _isAdmin;
         }
 
-        public int Id { get; }
-        public string Name { get; }
-        public string Email { get; }
-        public bool IsAdmin { get; }
+        public int Id { get => this.id; }
+        public string Name { get => this.name; }
+        public string Email { get => this.email; }
+        public bool IsAdmin { get => this.isAdmin; }
     }
 }

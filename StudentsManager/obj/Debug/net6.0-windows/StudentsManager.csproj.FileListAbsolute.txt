@@ -28,3 +28,4 @@ C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\ref\StudentsManager.dll
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Forms.LoginForm.resources
 C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Properties.Resources.resources
+C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Forms.MainAppForm.resources

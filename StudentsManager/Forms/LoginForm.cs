@@ -1,19 +1,14 @@
 ﻿using MySql.Data.MySqlClient;
 using StudentsManager.Classes;
 using System.Media;
-using System.Net.Mail;
 using System.Text.RegularExpressions;
 
 namespace StudentsManager.Forms
 {
     public partial class LoginForm : Form
     {
-        MySqlConnection db;
-
-        public LoginForm(MySqlConnection connection)
+        public LoginForm()
         {
-            db = connection;
-            db.Open();
             InitializeComponent();
         }
 
@@ -24,7 +19,9 @@ namespace StudentsManager.Forms
                 if(new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z").IsMatch(EmailInput.Value) && 
                     (new Regex(@"[0-9]+").IsMatch(PasswordInput.Value) && new Regex(@".{6,}").IsMatch(PasswordInput.Value)))
                 {
-                    using (MySqlCommand cmd = db.CreateCommand())
+                    Program.dbConnection.Open();
+
+                    using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                     {
                         cmd.CommandText = "SELECT * FROM users WHERE email = ?email LIMIT 1";
                         cmd.Parameters.AddWithValue("?email", EmailInput.Value);
@@ -32,10 +29,18 @@ namespace StudentsManager.Forms
 
                         if(dataReader.HasRows && dataReader.Read())
                         {
-                            if(BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
+                            if (BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
                             {
-                                MessageBox.Show("Verified!");
                                 LoginFormErrorLabel.Visible = false;
+                                this.Hide();
+                                this.Enabled = false;
+
+                                new MainAppForm(new User(
+                                    dataReader.GetInt32("id"),
+                                    $"{dataReader.GetString("firstName")} {dataReader.GetString("lastName")}",
+                                    dataReader.GetString("email"),
+                                    dataReader.GetBoolean("isAdmin")
+                                )).Visible = true;
                             }
                             else
                             {
@@ -53,6 +58,8 @@ namespace StudentsManager.Forms
 
                         dataReader.Close();
                     }
+
+                    Program.dbConnection.Close();
                 }
                 else
                 {
