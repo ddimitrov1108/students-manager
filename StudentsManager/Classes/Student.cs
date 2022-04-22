@@ -151,7 +151,7 @@ namespace StudentsManager.Classes
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);
                     MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                    if (dataReader.Read() && dataReader.HasRows)
+                    if (dataReader.HasRows && dataReader.Read())
                     {
                         this.facultyNumber = dataReader.GetString("facultyNumber");
                         this.firstName = dataReader.GetString("firstName");
@@ -166,7 +166,8 @@ namespace StudentsManager.Classes
                         dataReader.Close();
                         return 1;
                     }
-                    
+
+                    dataReader.Close();
                     return 0;
                 } 
             }

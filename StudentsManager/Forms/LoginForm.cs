@@ -10,8 +10,6 @@ namespace StudentsManager.Forms
     {
         MySqlConnection db;
 
-        private Regex emailRegex = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
-
         public LoginForm(MySqlConnection connection)
         {
             db = connection;
@@ -23,7 +21,7 @@ namespace StudentsManager.Forms
         {
             if(!string.IsNullOrWhiteSpace(EmailInput.Value) && !string.IsNullOrWhiteSpace(PasswordInput.Value))
             {
-                if(emailRegex.IsMatch(EmailInput.Value) && 
+                if(new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z").IsMatch(EmailInput.Value) && 
                     (new Regex(@"[0-9]+").IsMatch(PasswordInput.Value) && new Regex(@".{6,}").IsMatch(PasswordInput.Value)))
                 {
                     using (MySqlCommand cmd = db.CreateCommand())
@@ -32,7 +30,7 @@ namespace StudentsManager.Forms
                         cmd.Parameters.AddWithValue("?email", EmailInput.Value);
                         MySqlDataReader dataReader = cmd.ExecuteReader();
 
-                        if(dataReader.Read() && dataReader.HasRows)
+                        if(dataReader.HasRows && dataReader.Read())
                         {
                             if(BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
                             {
