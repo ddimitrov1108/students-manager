@@ -7,6 +7,9 @@
     <Compile Update="Components\Classes\InputGroup.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\ComboBoxInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\ErrorLabel.cs">
       <SubType>Component</SubType>
     </Compile>
