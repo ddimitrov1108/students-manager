@@ -40,7 +40,7 @@
             // 
             // EmailInput
             // 
-            this.EmailInput.ColorType = StudentsManager.Classes.ColorType.Success;
+            this.EmailInput.ColorType = StudentsManager.Classes.ColorType.Primary;
             this.EmailInput.HeaderText = "Email";
             this.EmailInput.IsPasswordField = false;
             this.EmailInput.Location = new System.Drawing.Point(23, 151);
@@ -53,7 +53,7 @@
             // 
             // PasswordInput
             // 
-            this.PasswordInput.ColorType = StudentsManager.Classes.ColorType.Error;
+            this.PasswordInput.ColorType = StudentsManager.Classes.ColorType.Primary;
             this.PasswordInput.HeaderText = "Password";
             this.PasswordInput.IsPasswordField = true;
             this.PasswordInput.Location = new System.Drawing.Point(23, 223);
