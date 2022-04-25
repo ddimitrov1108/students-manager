@@ -3,18 +3,16 @@ using System.Drawing.Drawing2D;
 
 namespace StudentsManager.Components
 {
-    public enum ButtonType { Primary, Secondary, Success, Error }
-
     public class CButton : Button
     {
-        private ButtonType buttonType;
+        private ColorType colorType;
         private int borderSize;
         private int borderRadius;
         private Color borderColor;
 
         public CButton()
         {
-            this.buttonType = ButtonType.Primary;
+            this.colorType = ColorType.Primary;
             this.borderSize = 0;
             this.borderRadius = 5;
             this.borderColor = ColorCollection.Gray;
@@ -77,21 +75,21 @@ namespace StudentsManager.Components
 
             this.ForeColor = Color.White;
 
-            switch (this.buttonType)
+            switch (this.colorType)
             {
-                default: case ButtonType.Primary: this.BackColor = ColorCollection.Primary; break;
-                case ButtonType.Secondary: this.BackColor = ColorCollection.LightBlue; break;
-                case ButtonType.Success: this.BackColor = ColorCollection.Green; break;
-                case ButtonType.Error: this.BackColor = ColorCollection.Tomato; break;
+                default: case ColorType.Primary: this.BackColor = ColorCollection.Primary; break;
+                case ColorType.Secondary: this.BackColor = ColorCollection.LightBlue; break;
+                case ColorType.Success: this.BackColor = ColorCollection.Green; break;
+                case ColorType.Error: this.BackColor = ColorCollection.Tomato; break;
             }
         }
 
-        public ButtonType Type
+        public ColorType ColorType
         {
-            get => this.buttonType;
+            get => this.colorType;
             set
             {
-                this.buttonType = value;
+                this.colorType = value;
                 this.Invalidate();
             }
         }

@@ -1,5 +1,6 @@
 ﻿namespace StudentsManager.Classes
 {
+    public enum ColorType { Primary, Secondary, Success, Error }
     public class ColorCollection
     {
         public static Color Primary = ColorTranslator.FromHtml("#007CF8");

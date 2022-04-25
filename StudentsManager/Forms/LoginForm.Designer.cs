@@ -40,6 +40,7 @@
             // 
             // EmailInput
             // 
+            this.EmailInput.ColorType = StudentsManager.Classes.ColorType.Success;
             this.EmailInput.HeaderText = "Email";
             this.EmailInput.IsPasswordField = false;
             this.EmailInput.Location = new System.Drawing.Point(23, 151);
@@ -52,6 +53,7 @@
             // 
             // PasswordInput
             // 
+            this.PasswordInput.ColorType = StudentsManager.Classes.ColorType.Error;
             this.PasswordInput.HeaderText = "Password";
             this.PasswordInput.IsPasswordField = true;
             this.PasswordInput.Location = new System.Drawing.Point(23, 223);
@@ -65,6 +67,7 @@
             // LoginBtn
             // 
             this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            this.LoginBtn.ColorType = StudentsManager.Classes.ColorType.Primary;
             this.LoginBtn.FlatAppearance.BorderSize = 0;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -74,7 +77,6 @@
             this.LoginBtn.Size = new System.Drawing.Size(258, 52);
             this.LoginBtn.TabIndex = 3;
             this.LoginBtn.Text = "Log In";
-            this.LoginBtn.Type = StudentsManager.Components.ButtonType.Primary;
             this.LoginBtn.UseVisualStyleBackColor = false;
             this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 

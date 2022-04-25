@@ -15,14 +15,8 @@ namespace StudentsManager.Components
             this.comboInput.Font = new Font("Poppins", 12);
             this.comboInput.ForeColor = ColorCollection.Black;
             this.comboInput.Dock = DockStyle.Fill;
-            this.comboInput.GotFocus += new EventHandler((s, e) => {
-                base.horizontalLine.BackColor = ColorCollection.Primary;
-                base.inputGroupHeader.ForeColor = ColorCollection.Primary;
-            });
-            this.comboInput.LostFocus += new EventHandler((s, e) => {
-                base.horizontalLine.BackColor = ColorCollection.LightGray;
-                base.inputGroupHeader.ForeColor = ColorCollection.Gray;
-            });
+            this.comboInput.GotFocus += new EventHandler((s, e) => base.initFocus());
+            this.comboInput.LostFocus += new EventHandler((s, e) => base.removeFocus());
             this.comboInput.DropDownWidth = this.comboInput.Width;
 
             this.Controls.Add(this.comboInput);

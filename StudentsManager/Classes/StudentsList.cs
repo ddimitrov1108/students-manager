@@ -31,7 +31,7 @@
         public int RemoveAt(int index)
         {
             if (index < 0 || index >= this.studentsList.Count)
-                return 0;
+                return -1;
 
             this.studentsList.RemoveAt(index);
             return 1;
