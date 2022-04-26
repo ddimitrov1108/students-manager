@@ -19,49 +19,58 @@ namespace StudentsManager.Forms
                 if(new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z").IsMatch(EmailInput.Value) && 
                     (new Regex(@"[0-9]+").IsMatch(PasswordInput.Value) && new Regex(@".{6,}").IsMatch(PasswordInput.Value)))
                 {
-                    Program.dbConnection.Open();
-
-                    using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
+                    try
                     {
-                        cmd.CommandText = "SELECT * FROM users WHERE email = ?email LIMIT 1";
-                        cmd.Parameters.AddWithValue("?email", EmailInput.Value);
-                        MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                        if(dataReader.HasRows && dataReader.Read())
+                        Program.dbConnection.Open();
+                        using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                         {
-                            if (BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
+                            cmd.CommandText = "SELECT * FROM users WHERE email = ?email LIMIT 1";
+                            cmd.Parameters.AddWithValue("?email", EmailInput.Value);
+                            MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                            if (dataReader.HasRows && dataReader.Read())
                             {
-                                LoginFormErrorLabel.Visible = false;
-                                this.Hide();
-                                this.Enabled = false;
-                                this.LoginBtn.Enabled = false;
+                                if (BCrypt.Net.BCrypt.Verify(PasswordInput.Value, dataReader.GetString("password")))
+                                {
+                                    LoginFormErrorLabel.Visible = false;
+                                    this.Hide();
+                                    this.Enabled = false;
+                                    this.LoginBtn.Enabled = false;
 
-                                User user = new User(
-                                    dataReader.GetInt32("id"),
-                                    $"{dataReader.GetString("firstName")} {dataReader.GetString("lastName")}",
-                                    dataReader.GetString("email"),
-                                    dataReader.GetBoolean("isAdmin")
-                                );
+                                    User user = new User(
+                                        dataReader.GetInt32("id"),
+                                        $"{dataReader.GetString("firstName")} {dataReader.GetString("lastName")}",
+                                        dataReader.GetString("email"),
+                                        dataReader.GetBoolean("isAdmin")
+                                    );
 
-                                dataReader.Close();
-                                Program.dbConnection.Close();
-                                new MainAppForm(user).Visible = true;
+                                    dataReader.Close();
+                                    Program.dbConnection.Close();
+                                    new MainAppForm(user).Visible = true;
+                                }
+                                else
+                                {
+                                    LoginFormErrorLabel.Text = "Email or password is incorrect";
+                                    LoginFormErrorLabel.Visible = true;
+                                    SystemSounds.Beep.Play();
+                                }
                             }
                             else
                             {
-                                LoginFormErrorLabel.Text = "Email or password is incorrect";
+                                LoginFormErrorLabel.Text = "No account associated with this email";
                                 LoginFormErrorLabel.Visible = true;
                                 SystemSounds.Beep.Play();
                             }
-                        }
-                        else
-                        {
-                            LoginFormErrorLabel.Text = "No account associated with this email";
-                            LoginFormErrorLabel.Visible = true;
-                            SystemSounds.Beep.Play();
+
+                            dataReader.Close();
                         }
 
-                        dataReader.Close();
+                        Program.dbConnection.Close();
+                    }
+                    catch (MySqlException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Program.dbConnection.Close();
                     }
                 }
                 else

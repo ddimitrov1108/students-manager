@@ -1,14 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using StudentsManager.Classes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace StudentsManager.Forms
 {
@@ -25,7 +16,7 @@ namespace StudentsManager.Forms
 
         private void MainAppForm_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show($"{this.loggedUser.Id} {this.loggedUser.Name}, {this.loggedUser.Email}, {this.loggedUser.IsAdmin}");
+            this.WelcomeHeaderText.Text = $"Welcome back, {this.loggedUser.Name}";
             this.ReadAllStudents();
         }
 
@@ -36,50 +27,19 @@ namespace StudentsManager.Forms
 
         private void ReadAllStudents()
         {
-            Program.dbConnection.Open();
-
-            using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
+            try
             {
-                cmd.CommandText =
-                    "SELECT" +
-                        " facultyNumber, firstName, lastName, phoneNumber," +
-                        " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
-                        " year, gpa, eduPaused" +
-                    " FROM students" +
-                        " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
-                        " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
-                        " INNER JOIN edu_forms ON students.formId = edu_forms.id";
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                if (dataReader.HasRows)
-                {
-                    this.students = new StudentsList();
-
-                    while (dataReader.Read())
-                    {
-                        this.students.AddElement(new Student(
-                            dataReader.GetString("facultyNumber"),
-                            dataReader.GetString("firstName"),
-                            dataReader.GetString("lastName"),
-                            dataReader.GetString("phoneNumber"),
-                            dataReader.GetString("degree"),
-                            dataReader.GetString("specialty"),
-                            dataReader.GetString("form"),
-                            dataReader.GetInt32("year"),
-                            dataReader.GetDouble("gpa"),
-                            dataReader.GetBoolean("EduPaused")
-                        ));
-                    }
-
-                    this.StudentsDataGrid.DataSource = this.students.GetCollection();
-                }
-
-                dataReader.Close();
+                Program.dbConnection.Open();
+                this.students.LoadDataFromDatabase();
+                Program.dbConnection.Close();
+                this.StudentsDataGrid.DataSource = this.students.GetCollection();
+                this.SetDataGridSettings();
             }
-
-            Program.dbConnection.Close();
-            this.SetDataGridSettings();
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.dbConnection.Close();
+            }
         }
 
         private void SetDataGridSettings()

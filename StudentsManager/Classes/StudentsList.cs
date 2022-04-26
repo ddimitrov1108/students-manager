@@ -1,4 +1,6 @@
-﻿namespace StudentsManager.Classes
+﻿using MySql.Data.MySqlClient;
+
+namespace StudentsManager.Classes
 {
     public class StudentsList
     {
@@ -61,6 +63,51 @@
             }
 
             return tempStudentsList;
+        }
+
+        public int LoadDataFromDatabase()
+        {
+            using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
+            {
+                cmd.CommandText =
+                    "SELECT" +
+                        " facultyNumber, firstName, lastName, phoneNumber," +
+                        " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
+                        " year, gpa, eduPaused" +
+                    " FROM students" +
+                        " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
+                        " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
+                        " INNER JOIN edu_forms ON students.formId = edu_forms.id";
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                if (dataReader.HasRows)
+                {
+                    this.studentsList = new List<Student>();
+
+                    while (dataReader.Read())
+                    {
+                        this.studentsList.Add(new Student(
+                            dataReader.GetString("facultyNumber"),
+                            dataReader.GetString("firstName"),
+                            dataReader.GetString("lastName"),
+                            dataReader.GetString("phoneNumber"),
+                            dataReader.GetString("degree"),
+                            dataReader.GetString("specialty"),
+                            dataReader.GetString("form"),
+                            dataReader.GetInt32("year"),
+                            dataReader.GetDouble("gpa"),
+                            dataReader.GetBoolean("EduPaused")
+                        ));
+                    }
+
+                    dataReader.Close();
+                    return 1;
+                }
+
+                dataReader.Close();
+                return 0;
+            }
         }
     }
 }

@@ -4,10 +4,10 @@ namespace StudentsManager.Classes
 {
     public interface IStudentCRUD
     {
-        int Create(MySqlConnection connection, int degreeId, int specialtyId, int formId);
-        int Read(MySqlConnection connection);
-        int Update(MySqlConnection connection, int degreeId, int specialtyId, int formId);
-        int Delete(MySqlConnection connection);
+        int Create(int degreeId, int specialtyId, int formId);
+        int Read();
+        int Update(int degreeId, int specialtyId, int formId);
+        int Delete();
     }
     public class Student : IStudentCRUD, IComparable<Student>
     {
@@ -95,11 +95,11 @@ namespace StudentsManager.Classes
         public override bool Equals(Object? obj) =>
             obj == null || !this.GetType().Equals(obj.GetType()) ? false : this.facultyNumber.CompareTo(((Student) obj).facultyNumber) == 0;
 
-        public int Create(MySqlConnection connection, int degreeId, int specialtyId, int formId)
+        public int Create(int degreeId, int specialtyId, int formId)
         {
             try
             {
-                using (MySqlCommand cmd = connection.CreateCommand())
+                using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText = "INSERT INTO students VALUES(null, ?facNum, ?fn, ?ln, ?phn, ?dtid, ?snid, ?ftid, ?year, ?gpa, ?edup, default, default)";
                     cmd.Parameters.AddRange(new MySqlParameter[] 
@@ -126,16 +126,11 @@ namespace StudentsManager.Classes
             }
         }
 
-        public int Read(MySqlConnection connection)
+        public int Read()
         {
             try
             {
-                if(connection == null)
-                {
-                    MessageBox.Show("no connection");
-                    return 0;
-                }
-                using (MySqlCommand cmd = connection.CreateCommand())
+                using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
                         "SELECT" +
@@ -174,16 +169,15 @@ namespace StudentsManager.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw ex;
                 return 0;
             }
         }
 
-        public int Update(MySqlConnection connection, int degreeId, int specialtyId, int formId)
+        public int Update(int degreeId, int specialtyId, int formId)
         {
             try
             {
-                using (MySqlCommand cmd = connection.CreateCommand())
+                using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
                         "UPDATE students SET" +
@@ -223,11 +217,11 @@ namespace StudentsManager.Classes
             }
         }
 
-        public int Delete(MySqlConnection connection)
+        public int Delete()
         {
             try
             {
-                using (MySqlCommand cmd = connection.CreateCommand())
+                using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM students WHERE facultyNumber = ?facNum";
                     cmd.Parameters.AddWithValue("?facNum", this.facultyNumber);

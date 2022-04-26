@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cButton4 = new StudentsManager.Components.CButton();
             this.textBoxInput3 = new StudentsManager.Components.TextBoxInput();
@@ -41,14 +41,14 @@
             this.SearchBtn = new StudentsManager.Components.CButton();
             this.headerText3 = new StudentsManager.Components.HeaderText();
             this.ReadAllRecordsBtn = new StudentsManager.Components.CButton();
-            this.textBoxInput1 = new StudentsManager.Components.TextBoxInput();
+            this.QuickSearchFacNumberInput = new StudentsManager.Components.TextBoxInput();
             this.AddNewRecordBtn = new StudentsManager.Components.CButton();
             this.DeleteSelectedRowBtn = new StudentsManager.Components.CButton();
             this.headerText2 = new StudentsManager.Components.HeaderText();
             this.EditSelectedRowBtn = new StudentsManager.Components.CButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.faIcon3 = new StudentsManager.Components.FAIcon();
-            this.headerText1 = new StudentsManager.Components.HeaderText();
+            this.WelcomeHeaderText = new StudentsManager.Components.HeaderText();
             this.faIcon2 = new StudentsManager.Components.FAIcon();
             this.StudentsDataGrid = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -67,7 +67,7 @@
             this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Controls.Add(this.headerText3);
             this.panel1.Controls.Add(this.ReadAllRecordsBtn);
-            this.panel1.Controls.Add(this.textBoxInput1);
+            this.panel1.Controls.Add(this.QuickSearchFacNumberInput);
             this.panel1.Controls.Add(this.AddNewRecordBtn);
             this.panel1.Controls.Add(this.DeleteSelectedRowBtn);
             this.panel1.Controls.Add(this.headerText2);
@@ -180,18 +180,18 @@
             this.ReadAllRecordsBtn.UseVisualStyleBackColor = false;
             this.ReadAllRecordsBtn.Click += new System.EventHandler(this.ReadAllRecordsBtn_Click);
             // 
-            // textBoxInput1
+            // QuickSearchFacNumberInput
             // 
-            this.textBoxInput1.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
-            this.textBoxInput1.HeaderText = "Faculty Number";
-            this.textBoxInput1.IsPasswordField = false;
-            this.textBoxInput1.Location = new System.Drawing.Point(20, 50);
-            this.textBoxInput1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.textBoxInput1.MaxLength = 20;
-            this.textBoxInput1.Name = "textBoxInput1";
-            this.textBoxInput1.Size = new System.Drawing.Size(180, 52);
-            this.textBoxInput1.TabIndex = 1;
-            this.textBoxInput1.Value = "";
+            this.QuickSearchFacNumberInput.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
+            this.QuickSearchFacNumberInput.HeaderText = "Faculty Number";
+            this.QuickSearchFacNumberInput.IsPasswordField = false;
+            this.QuickSearchFacNumberInput.Location = new System.Drawing.Point(20, 50);
+            this.QuickSearchFacNumberInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.QuickSearchFacNumberInput.MaxLength = 20;
+            this.QuickSearchFacNumberInput.Name = "QuickSearchFacNumberInput";
+            this.QuickSearchFacNumberInput.Size = new System.Drawing.Size(180, 52);
+            this.QuickSearchFacNumberInput.TabIndex = 1;
+            this.QuickSearchFacNumberInput.Value = "";
             // 
             // AddNewRecordBtn
             // 
@@ -260,7 +260,7 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.faIcon3);
-            this.panel2.Controls.Add(this.headerText1);
+            this.panel2.Controls.Add(this.WelcomeHeaderText);
             this.panel2.Controls.Add(this.faIcon2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(220, 0);
@@ -288,19 +288,19 @@
             this.faIcon3.TabStop = false;
             this.faIcon3.UseGdi = true;
             // 
-            // headerText1
+            // WelcomeHeaderText
             // 
-            this.headerText1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.headerText1.Font = new System.Drawing.Font("Poppins", 10.72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.headerText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            this.headerText1.HeaderType = StudentsManager.Components.HeaderType.Small;
-            this.headerText1.Location = new System.Drawing.Point(20, 0);
-            this.headerText1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.headerText1.Name = "headerText1";
-            this.headerText1.Size = new System.Drawing.Size(320, 50);
-            this.headerText1.TabIndex = 2;
-            this.headerText1.Text = "Welcome back, Daniel Dimitrov";
-            this.headerText1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.WelcomeHeaderText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.WelcomeHeaderText.Font = new System.Drawing.Font("Poppins", 10.72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.WelcomeHeaderText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            this.WelcomeHeaderText.HeaderType = StudentsManager.Components.HeaderType.Small;
+            this.WelcomeHeaderText.Location = new System.Drawing.Point(20, 0);
+            this.WelcomeHeaderText.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.WelcomeHeaderText.Name = "WelcomeHeaderText";
+            this.WelcomeHeaderText.Size = new System.Drawing.Size(480, 50);
+            this.WelcomeHeaderText.TabIndex = 2;
+            this.WelcomeHeaderText.Text = "Welcome back, Daniel Dimitrov";
+            this.WelcomeHeaderText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // faIcon2
             // 
@@ -325,28 +325,28 @@
             this.StudentsDataGrid.AllowUserToAddRows = false;
             this.StudentsDataGrid.AllowUserToDeleteRows = false;
             this.StudentsDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StudentsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StudentsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.StudentsDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.StudentsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StudentsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StudentsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StudentsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.StudentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StudentsDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StudentsDataGrid.DefaultCellStyle = dataGridViewCellStyle23;
             this.StudentsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StudentsDataGrid.GridColor = System.Drawing.Color.White;
             this.StudentsDataGrid.Location = new System.Drawing.Point(220, 50);
@@ -355,16 +355,16 @@
             this.StudentsDataGrid.Name = "StudentsDataGrid";
             this.StudentsDataGrid.ReadOnly = true;
             this.StudentsDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StudentsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StudentsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StudentsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StudentsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle25;
             this.StudentsDataGrid.RowTemplate.Height = 25;
             this.StudentsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StudentsDataGrid.Size = new System.Drawing.Size(1044, 631);
@@ -403,13 +403,13 @@
 
         private Panel panel1;
         private Panel panel2;
-        private Components.HeaderText headerText1;
+        private Components.HeaderText WelcomeHeaderText;
         private Components.HeaderText headerText2;
         private Components.FAIcon faIcon2;
         private Components.HeaderText headerText3;
         private Components.CButton ReadAllRecordsBtn;
         private Components.CButton DeleteSelectedRowBtn;
-        private Components.TextBoxInput textBoxInput1;
+        private Components.TextBoxInput QuickSearchFacNumberInput;
         private Components.CButton EditSelectedRowBtn;
         private Components.CButton AddNewRecordBtn;
         private Components.FAIcon faIcon3;
