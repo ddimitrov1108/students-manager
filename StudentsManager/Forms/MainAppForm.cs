@@ -99,6 +99,28 @@ namespace StudentsManager.Forms
 
             if (this.StudentsDataGrid.Columns.Contains("EducationPaused"))
                 this.StudentsDataGrid.Columns.Remove("EducationPaused");
+
+            MessageBox.Show(this.StudentsDataGrid.SelectedRows.Count.ToString());
+        }
+
+        private void ReadAllRecordsBtn_Click(object sender, EventArgs e)
+        {
+            this.ReadAllStudents();
+        }
+
+        private void AddNewRecordBtn_Click(object sender, EventArgs e)
+        {
+            // @ TODO
+        }
+
+        private void EditSelectedRowBtn_Click(object sender, EventArgs e)
+        {
+            // @ TODO
+        }
+
+        private void DeleteSelectedRowBtn_Click(object sender, EventArgs e)
+        {
+            // @ TODO
         }
     }
 }

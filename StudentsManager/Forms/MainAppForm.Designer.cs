@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cButton4 = new StudentsManager.Components.CButton();
             this.textBoxInput3 = new StudentsManager.Components.TextBoxInput();
@@ -40,12 +40,12 @@
             this.headerText5 = new StudentsManager.Components.HeaderText();
             this.SearchBtn = new StudentsManager.Components.CButton();
             this.headerText3 = new StudentsManager.Components.HeaderText();
-            this.cButton3 = new StudentsManager.Components.CButton();
+            this.ReadAllRecordsBtn = new StudentsManager.Components.CButton();
             this.textBoxInput1 = new StudentsManager.Components.TextBoxInput();
-            this.AddRecordBtn = new StudentsManager.Components.CButton();
-            this.cButton2 = new StudentsManager.Components.CButton();
+            this.AddNewRecordBtn = new StudentsManager.Components.CButton();
+            this.DeleteSelectedRowBtn = new StudentsManager.Components.CButton();
             this.headerText2 = new StudentsManager.Components.HeaderText();
-            this.cButton1 = new StudentsManager.Components.CButton();
+            this.EditSelectedRowBtn = new StudentsManager.Components.CButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.faIcon3 = new StudentsManager.Components.FAIcon();
             this.headerText1 = new StudentsManager.Components.HeaderText();
@@ -66,12 +66,12 @@
             this.panel1.Controls.Add(this.headerText5);
             this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Controls.Add(this.headerText3);
-            this.panel1.Controls.Add(this.cButton3);
+            this.panel1.Controls.Add(this.ReadAllRecordsBtn);
             this.panel1.Controls.Add(this.textBoxInput1);
-            this.panel1.Controls.Add(this.AddRecordBtn);
-            this.panel1.Controls.Add(this.cButton2);
+            this.panel1.Controls.Add(this.AddNewRecordBtn);
+            this.panel1.Controls.Add(this.DeleteSelectedRowBtn);
             this.panel1.Controls.Add(this.headerText2);
-            this.panel1.Controls.Add(this.cButton1);
+            this.panel1.Controls.Add(this.EditSelectedRowBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -163,21 +163,22 @@
             this.headerText3.Text = "Quick Search";
             this.headerText3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cButton3
+            // ReadAllRecordsBtn
             // 
-            this.cButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.cButton3.ColorSelected = StudentsManager.Components.Classes.ColorType.Secondary;
-            this.cButton3.FlatAppearance.BorderSize = 0;
-            this.cButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cButton3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cButton3.ForeColor = System.Drawing.Color.White;
-            this.cButton3.Location = new System.Drawing.Point(20, 464);
-            this.cButton3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.cButton3.Name = "cButton3";
-            this.cButton3.Size = new System.Drawing.Size(180, 32);
-            this.cButton3.TabIndex = 6;
-            this.cButton3.Text = "Read All Records";
-            this.cButton3.UseVisualStyleBackColor = false;
+            this.ReadAllRecordsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            this.ReadAllRecordsBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
+            this.ReadAllRecordsBtn.FlatAppearance.BorderSize = 0;
+            this.ReadAllRecordsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ReadAllRecordsBtn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReadAllRecordsBtn.ForeColor = System.Drawing.Color.White;
+            this.ReadAllRecordsBtn.Location = new System.Drawing.Point(20, 464);
+            this.ReadAllRecordsBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.ReadAllRecordsBtn.Name = "ReadAllRecordsBtn";
+            this.ReadAllRecordsBtn.Size = new System.Drawing.Size(180, 32);
+            this.ReadAllRecordsBtn.TabIndex = 6;
+            this.ReadAllRecordsBtn.Text = "Read All Records";
+            this.ReadAllRecordsBtn.UseVisualStyleBackColor = false;
+            this.ReadAllRecordsBtn.Click += new System.EventHandler(this.ReadAllRecordsBtn_Click);
             // 
             // textBoxInput1
             // 
@@ -192,37 +193,39 @@
             this.textBoxInput1.TabIndex = 1;
             this.textBoxInput1.Value = "";
             // 
-            // AddRecordBtn
+            // AddNewRecordBtn
             // 
-            this.AddRecordBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
-            this.AddRecordBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Success;
-            this.AddRecordBtn.FlatAppearance.BorderSize = 0;
-            this.AddRecordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddRecordBtn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddRecordBtn.ForeColor = System.Drawing.Color.White;
-            this.AddRecordBtn.Location = new System.Drawing.Point(20, 516);
-            this.AddRecordBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.AddRecordBtn.Name = "AddRecordBtn";
-            this.AddRecordBtn.Size = new System.Drawing.Size(180, 32);
-            this.AddRecordBtn.TabIndex = 7;
-            this.AddRecordBtn.Text = "New Record";
-            this.AddRecordBtn.UseVisualStyleBackColor = false;
+            this.AddNewRecordBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
+            this.AddNewRecordBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Success;
+            this.AddNewRecordBtn.FlatAppearance.BorderSize = 0;
+            this.AddNewRecordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddNewRecordBtn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AddNewRecordBtn.ForeColor = System.Drawing.Color.White;
+            this.AddNewRecordBtn.Location = new System.Drawing.Point(20, 516);
+            this.AddNewRecordBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.AddNewRecordBtn.Name = "AddNewRecordBtn";
+            this.AddNewRecordBtn.Size = new System.Drawing.Size(180, 32);
+            this.AddNewRecordBtn.TabIndex = 7;
+            this.AddNewRecordBtn.Text = "New Record";
+            this.AddNewRecordBtn.UseVisualStyleBackColor = false;
+            this.AddNewRecordBtn.Click += new System.EventHandler(this.AddNewRecordBtn_Click);
             // 
-            // cButton2
+            // DeleteSelectedRowBtn
             // 
-            this.cButton2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
-            this.cButton2.ColorSelected = StudentsManager.Components.Classes.ColorType.Error;
-            this.cButton2.FlatAppearance.BorderSize = 0;
-            this.cButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cButton2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cButton2.ForeColor = System.Drawing.Color.White;
-            this.cButton2.Location = new System.Drawing.Point(20, 620);
-            this.cButton2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.cButton2.Name = "cButton2";
-            this.cButton2.Size = new System.Drawing.Size(180, 32);
-            this.cButton2.TabIndex = 9;
-            this.cButton2.Text = "Delete Selected Record";
-            this.cButton2.UseVisualStyleBackColor = false;
+            this.DeleteSelectedRowBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
+            this.DeleteSelectedRowBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Error;
+            this.DeleteSelectedRowBtn.FlatAppearance.BorderSize = 0;
+            this.DeleteSelectedRowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteSelectedRowBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteSelectedRowBtn.Location = new System.Drawing.Point(20, 620);
+            this.DeleteSelectedRowBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.DeleteSelectedRowBtn.Name = "DeleteSelectedRowBtn";
+            this.DeleteSelectedRowBtn.Size = new System.Drawing.Size(180, 32);
+            this.DeleteSelectedRowBtn.TabIndex = 9;
+            this.DeleteSelectedRowBtn.Text = "Delete Selected Record";
+            this.DeleteSelectedRowBtn.UseVisualStyleBackColor = false;
+            this.DeleteSelectedRowBtn.Click += new System.EventHandler(this.DeleteSelectedRowBtn_Click);
             // 
             // headerText2
             // 
@@ -237,21 +240,22 @@
             this.headerText2.Text = "CRUD Operations";
             this.headerText2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cButton1
+            // EditSelectedRowBtn
             // 
-            this.cButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            this.cButton1.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
-            this.cButton1.FlatAppearance.BorderSize = 0;
-            this.cButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cButton1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.cButton1.ForeColor = System.Drawing.Color.White;
-            this.cButton1.Location = new System.Drawing.Point(20, 568);
-            this.cButton1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.cButton1.Name = "cButton1";
-            this.cButton1.Size = new System.Drawing.Size(180, 32);
-            this.cButton1.TabIndex = 8;
-            this.cButton1.Text = "Edit Selected Record";
-            this.cButton1.UseVisualStyleBackColor = false;
+            this.EditSelectedRowBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(255)))));
+            this.EditSelectedRowBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Secondary;
+            this.EditSelectedRowBtn.FlatAppearance.BorderSize = 0;
+            this.EditSelectedRowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EditSelectedRowBtn.ForeColor = System.Drawing.Color.White;
+            this.EditSelectedRowBtn.Location = new System.Drawing.Point(20, 568);
+            this.EditSelectedRowBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.EditSelectedRowBtn.Name = "EditSelectedRowBtn";
+            this.EditSelectedRowBtn.Size = new System.Drawing.Size(180, 32);
+            this.EditSelectedRowBtn.TabIndex = 8;
+            this.EditSelectedRowBtn.Text = "Edit Selected Record";
+            this.EditSelectedRowBtn.UseVisualStyleBackColor = false;
+            this.EditSelectedRowBtn.Click += new System.EventHandler(this.EditSelectedRowBtn_Click);
             // 
             // panel2
             // 
@@ -321,28 +325,28 @@
             this.StudentsDataGrid.AllowUserToAddRows = false;
             this.StudentsDataGrid.AllowUserToDeleteRows = false;
             this.StudentsDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StudentsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StudentsDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.StudentsDataGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.StudentsDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.StudentsDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StudentsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StudentsDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.StudentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StudentsDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.StudentsDataGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.StudentsDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.StudentsDataGrid.GridColor = System.Drawing.Color.White;
             this.StudentsDataGrid.Location = new System.Drawing.Point(220, 50);
@@ -351,16 +355,16 @@
             this.StudentsDataGrid.Name = "StudentsDataGrid";
             this.StudentsDataGrid.ReadOnly = true;
             this.StudentsDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StudentsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.StudentsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.StudentsDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Poppins", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.StudentsDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.StudentsDataGrid.RowTemplate.Height = 25;
             this.StudentsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.StudentsDataGrid.Size = new System.Drawing.Size(1044, 631);
@@ -403,11 +407,11 @@
         private Components.HeaderText headerText2;
         private Components.FAIcon faIcon2;
         private Components.HeaderText headerText3;
-        private Components.CButton cButton3;
-        private Components.CButton cButton2;
+        private Components.CButton ReadAllRecordsBtn;
+        private Components.CButton DeleteSelectedRowBtn;
         private Components.TextBoxInput textBoxInput1;
-        private Components.CButton cButton1;
-        private Components.CButton AddRecordBtn;
+        private Components.CButton EditSelectedRowBtn;
+        private Components.CButton AddNewRecordBtn;
         private Components.FAIcon faIcon3;
         private DataGridView StudentsDataGrid;
         private Components.CButton SearchBtn;
