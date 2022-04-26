@@ -9,6 +9,7 @@
         public static Color Yellow = ColorTranslator.FromHtml("#FFCC00");
         public static Color White = ColorTranslator.FromHtml("#FFFFFF");
         public static Color LightGray = ColorTranslator.FromHtml("#DCE0E4");
+        public static Color LightGrayV2 = ColorTranslator.FromHtml("#6c757d");
         public static Color Gray = ColorTranslator.FromHtml("#3C4044");
         public static Color Black = ColorTranslator.FromHtml("#1E2226");
     }

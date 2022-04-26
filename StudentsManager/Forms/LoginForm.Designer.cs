@@ -83,13 +83,13 @@
             // headerText1
             // 
             this.headerText1.AutoSize = true;
-            this.headerText1.Font = new System.Drawing.Font("Poppins", 13.28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.headerText1.Font = new System.Drawing.Font("Poppins", 10.72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.headerText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(34)))), ((int)(((byte)(38)))));
             this.headerText1.HeaderType = StudentsManager.Components.HeaderType.Small;
             this.headerText1.Location = new System.Drawing.Point(20, 110);
             this.headerText1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.headerText1.Name = "headerText1";
-            this.headerText1.Size = new System.Drawing.Size(216, 31);
+            this.headerText1.Size = new System.Drawing.Size(177, 26);
             this.headerText1.TabIndex = 6;
             this.headerText1.Text = "Enter your credentials";
             this.headerText1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

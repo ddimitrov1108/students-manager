@@ -13,8 +13,7 @@
         public int Count =>
             this.studentsList.Count;
 
-        public List<Student> GetCollection() =>
-            this.studentsList;
+        public List<Student> GetCollection() { return this.studentsList; }
 
         public void SortByFacultyNumber() =>
             this.studentsList.Sort();

@@ -63,16 +63,16 @@ namespace StudentsManager.Classes
             this.educationPaused = _eduPaused;
         }
 
-        public string FullName { get => $"{ this.firstName } { this.lastName }"; }
+        public string FullName() => $"{ this.firstName } { this.lastName }";
         public string FacultyNumber { get => this.facultyNumber; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string PhoneNumber { get; set; }
-        public string DegreeType { get; set; }
-        public string SpecialtyName { get; set; }
-        public string FormType { get; set; }
-        public int Year { get; set; }
-        public double Gpa { get; set; }
+        public string FirstName { get => this.firstName; set => this.firstName = value; }
+        public string LastName { get => this.lastName; set => this.lastName = value; }
+        public string PhoneNumber { get => this.phoneNumber; set => this.phoneNumber = value; }
+        public string DegreeType { get => this.degreeType; set => this.degreeType = value; }
+        public string SpecialtyName { get => this.specialtyName; set => this.specialtyName = value; }
+        public string FormType { get => this.formType; set => this.formType = value; }
+        public int Year { get => this.year; set => this.year = value; }
+        public double Gpa { get => this.gpa; set => this.gpa = value; }
         public bool EducationPaused { get; set; }
 
         public override string ToString()
@@ -174,6 +174,7 @@ namespace StudentsManager.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw ex;
                 return 0;
             }
         }

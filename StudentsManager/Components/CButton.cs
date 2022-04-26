@@ -84,7 +84,7 @@ namespace StudentsManager.Components
             switch (this.colorType)
             {
                 default: case ColorType.Primary: this.BackColor = ColorCollection.Primary; break;
-                case ColorType.Secondary: this.BackColor = ColorCollection.Gray; break;
+                case ColorType.Secondary: this.BackColor = ColorCollection.LightGrayV2; break;
                 case ColorType.Success: this.BackColor = ColorCollection.Green; break;
                 case ColorType.Error: this.BackColor = ColorCollection.Tomato; break;
             }

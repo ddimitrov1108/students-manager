@@ -46,8 +46,8 @@ namespace StudentsManager.Components
                     this.inputGroupHeader.ForeColor = ColorCollection.Primary;
                     break;
                 case ColorType.Secondary:
-                    this.horizontalLine.BackColor = ColorCollection.Gray;
-                    this.inputGroupHeader.ForeColor = ColorCollection.Gray;
+                    this.horizontalLine.BackColor = ColorCollection.LightGrayV2;
+                    this.inputGroupHeader.ForeColor = ColorCollection.LightGrayV2;
                     break;
                 case ColorType.Success:
                     this.horizontalLine.BackColor = ColorCollection.Green;

@@ -56,7 +56,7 @@ namespace StudentsManager.Components
             switch (this.colorType)
             {
                 default: case ColorType.Primary: this.IconColor = ColorCollection.Primary; break;
-                case ColorType.Secondary: this.IconColor = ColorCollection.Gray; break;
+                case ColorType.Secondary: this.IconColor = ColorCollection.LightGrayV2; break;
                 case ColorType.Success: this.IconColor = ColorCollection.Green; break;
                 case ColorType.Error: this.IconColor = ColorCollection.Tomato; break;
             }

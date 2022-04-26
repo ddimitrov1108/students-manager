@@ -36,12 +36,16 @@ namespace StudentsManager.Forms
                                 this.Enabled = false;
                                 this.LoginBtn.Enabled = false;
 
-                                new MainAppForm(new User(
+                                User user = new User(
                                     dataReader.GetInt32("id"),
                                     $"{dataReader.GetString("firstName")} {dataReader.GetString("lastName")}",
                                     dataReader.GetString("email"),
                                     dataReader.GetBoolean("isAdmin")
-                                )).Visible = true;
+                                );
+
+                                dataReader.Close();
+                                Program.dbConnection.Close();
+                                new MainAppForm(user).Visible = true;
                             }
                             else
                             {
@@ -59,8 +63,6 @@ namespace StudentsManager.Forms
 
                         dataReader.Close();
                     }
-
-                    Program.dbConnection.Close();
                 }
                 else
                 {
