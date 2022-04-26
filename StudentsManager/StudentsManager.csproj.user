@@ -13,6 +13,9 @@
     <Compile Update="Components\ErrorLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Update="Components\FAIcon.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Update="Components\HeaderText.cs">
       <SubType>Component</SubType>
     </Compile>

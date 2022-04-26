@@ -1,8 +1,9 @@
 ﻿using StudentsManager.Classes;
+using StudentsManager.Components.Classes;
 
 namespace StudentsManager.Components
 {
-    public class InputGroup : Panel
+    public class InputGroup : Panel, ColorTypeSelection
     {
         private ColorType colorType;
         private Label inputGroupHeader;
@@ -35,27 +36,37 @@ namespace StudentsManager.Components
             this.Controls.Add(this.inputGroupHeader);
         }
 
-        protected void initFocus()
+        public void PaintSelectedColorType()
         {
             switch (this.colorType)
             {
                 default:
                 case ColorType.Primary:
-                        this.horizontalLine.BackColor = ColorCollection.Primary;
-                        this.inputGroupHeader.ForeColor = ColorCollection.Primary;
+                    this.horizontalLine.BackColor = ColorCollection.Primary;
+                    this.inputGroupHeader.ForeColor = ColorCollection.Primary;
                     break;
                 case ColorType.Secondary:
-                        this.horizontalLine.BackColor = ColorCollection.LightBlue;
-                        this.inputGroupHeader.ForeColor = ColorCollection.LightBlue;
+                    this.horizontalLine.BackColor = ColorCollection.Gray;
+                    this.inputGroupHeader.ForeColor = ColorCollection.Gray;
                     break;
                 case ColorType.Success:
-                        this.horizontalLine.BackColor = ColorCollection.Green;
-                        this.inputGroupHeader.ForeColor = ColorCollection.Green;
+                    this.horizontalLine.BackColor = ColorCollection.Green;
+                    this.inputGroupHeader.ForeColor = ColorCollection.Green;
                     break;
                 case ColorType.Error:
-                        this.horizontalLine.BackColor = ColorCollection.Tomato;
-                        this.inputGroupHeader.ForeColor = ColorCollection.Tomato;
+                    this.horizontalLine.BackColor = ColorCollection.Tomato;
+                    this.inputGroupHeader.ForeColor = ColorCollection.Tomato;
                     break;
+            }
+        }
+
+        public ColorType ColorSelected
+        {
+            get => this.colorType;
+            set
+            {
+                this.colorType = value;
+                this.Invalidate();
             }
         }
 
@@ -74,16 +85,6 @@ namespace StudentsManager.Components
         {
             get => this.inputGroupHeader.Text;
             set => this.inputGroupHeader.Text = value;
-        }
-
-        public ColorType ColorType
-        {
-            get => this.colorType;
-            set
-            {
-                this.colorType = value;
-                this.Invalidate();
-            }
         }
     }
 }

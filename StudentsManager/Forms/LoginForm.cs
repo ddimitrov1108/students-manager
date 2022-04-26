@@ -34,6 +34,7 @@ namespace StudentsManager.Forms
                                 LoginFormErrorLabel.Visible = false;
                                 this.Hide();
                                 this.Enabled = false;
+                                this.LoginBtn.Enabled = false;
 
                                 new MainAppForm(new User(
                                     dataReader.GetInt32("id"),

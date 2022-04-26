@@ -15,7 +15,7 @@ namespace StudentsManager.Components
             this.textInput.MaxLength = 20;
             this.textInput.BorderStyle = BorderStyle.None;
             this.textInput.Dock = DockStyle.Fill;
-            this.textInput.GotFocus += new EventHandler((s, e) => base.initFocus());
+            this.textInput.GotFocus += new EventHandler((s, e) => base.PaintSelectedColorType());
             this.textInput.LostFocus += new EventHandler((s, e) => base.removeFocus());
             this.isPasswordField = false;
             this.Controls.Add(this.textInput);

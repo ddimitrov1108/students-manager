@@ -33,6 +33,18 @@
           "lib/netstandard1.3/DotNetEnv.dll": {}
         }
       },
+      "FontAwesome.Sharp/5.15.4": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0-windows7.0/FontAwesome.Sharp.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      },
       "Google.Protobuf/3.14.0": {
         "type": "package",
         "dependencies": {
@@ -1556,6 +1568,23 @@
         "dotnetenv.2.3.0.nupkg.sha512",
         "dotnetenv.nuspec",
         "lib/netstandard1.3/DotNetEnv.dll"
+      ]
+    },
+    "FontAwesome.Sharp/5.15.4": {
+      "sha512": "IqJe1IQas6tSVXMNHTWA/NJeP7azyxDTk6DCB+NMXOOED2F07IYI9nvfB1HP83r4yh5cntZoTdwSpIraA5XoXw==",
+      "type": "package",
+      "path": "fontawesome.sharp/5.15.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fontawesome.sharp.5.15.4.nupkg.sha512",
+        "fontawesome.sharp.nuspec",
+        "lib/net40/FontAwesome.Sharp.dll",
+        "lib/net45/FontAwesome.Sharp.dll",
+        "lib/net472/FontAwesome.Sharp.dll",
+        "lib/net48/FontAwesome.Sharp.dll",
+        "lib/net5.0-windows7.0/FontAwesome.Sharp.dll",
+        "lib/netcoreapp3.1/FontAwesome.Sharp.dll"
       ]
     },
     "Google.Protobuf/3.14.0": {
@@ -5384,6 +5413,7 @@
     "net6.0-windows7.0": [
       "BCrypt.Net-Next >= 4.0.3",
       "DotNetEnv >= 2.3.0",
+      "FontAwesome.Sharp >= 5.15.4",
       "MySql.Data >= 8.0.28"
     ]
   },
@@ -5433,6 +5463,10 @@
           "DotNetEnv": {
             "target": "Package",
             "version": "[2.3.0, )"
+          },
+          "FontAwesome.Sharp": {
+            "target": "Package",
+            "version": "[5.15.4, )"
           },
           "MySql.Data": {
             "target": "Package",

@@ -1,9 +1,10 @@
 ﻿using StudentsManager.Classes;
+using StudentsManager.Components.Classes;
 using System.Drawing.Drawing2D;
 
 namespace StudentsManager.Components
 {
-    public class CButton : Button
+    public class CButton : Button, ColorTypeSelection
     {
         private ColorType colorType;
         private int borderSize;
@@ -73,18 +74,23 @@ namespace StudentsManager.Components
                 }
             }
 
+            this.PaintSelectedColorType();
+        }
+
+        public void PaintSelectedColorType()
+        {
             this.ForeColor = Color.White;
 
             switch (this.colorType)
             {
                 default: case ColorType.Primary: this.BackColor = ColorCollection.Primary; break;
-                case ColorType.Secondary: this.BackColor = ColorCollection.LightBlue; break;
+                case ColorType.Secondary: this.BackColor = ColorCollection.Gray; break;
                 case ColorType.Success: this.BackColor = ColorCollection.Green; break;
                 case ColorType.Error: this.BackColor = ColorCollection.Tomato; break;
             }
         }
 
-        public ColorType ColorType
+        public ColorType ColorSelected
         {
             get => this.colorType;
             set

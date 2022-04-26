@@ -40,7 +40,7 @@
             // 
             // EmailInput
             // 
-            this.EmailInput.ColorType = StudentsManager.Classes.ColorType.Primary;
+            this.EmailInput.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.EmailInput.HeaderText = "Email";
             this.EmailInput.IsPasswordField = false;
             this.EmailInput.Location = new System.Drawing.Point(23, 151);
@@ -53,7 +53,7 @@
             // 
             // PasswordInput
             // 
-            this.PasswordInput.ColorType = StudentsManager.Classes.ColorType.Primary;
+            this.PasswordInput.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.PasswordInput.HeaderText = "Password";
             this.PasswordInput.IsPasswordField = true;
             this.PasswordInput.Location = new System.Drawing.Point(23, 223);
@@ -67,7 +67,7 @@
             // LoginBtn
             // 
             this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            this.LoginBtn.ColorType = StudentsManager.Classes.ColorType.Primary;
+            this.LoginBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.LoginBtn.FlatAppearance.BorderSize = 0;
             this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

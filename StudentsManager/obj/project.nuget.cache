@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Muxi0xYPKMtCbw/bPeUr19owQvCo+QTLqDXQuZ7p58whZf3gZR62F7jue8PLGwC+3M5tvjdSoNKFKanFQHSVTA==",
+  "dgSpecHash": "OurVKxCSpPSQKw4TpcNn15M7CaI61+KiINhYrtUzVPEiCTPJq6URw1fw8rFM4GKLzC3MA2ooolINxOOEW1CV5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ddimi\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\ddimi\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\ddimi\\.nuget\\packages\\dotnetenv\\2.3.0\\dotnetenv.2.3.0.nupkg.sha512",
+    "C:\\Users\\ddimi\\.nuget\\packages\\fontawesome.sharp\\5.15.4\\fontawesome.sharp.5.15.4.nupkg.sha512",
     "C:\\Users\\ddimi\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
     "C:\\Users\\ddimi\\.nuget\\packages\\k4os.compression.lz4\\1.2.6\\k4os.compression.lz4.1.2.6.nupkg.sha512",
     "C:\\Users\\ddimi\\.nuget\\packages\\k4os.compression.lz4.streams\\1.2.6\\k4os.compression.lz4.streams.1.2.6.nupkg.sha512",
