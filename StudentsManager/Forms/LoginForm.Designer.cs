@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.EmailInput = new StudentsManager.Components.TextBoxInput();
             this.PasswordInput = new StudentsManager.Components.TextBoxInput();
-            this.LoginBtn = new StudentsManager.Components.CButton();
             this.headerText1 = new StudentsManager.Components.HeaderText();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.LoginFormErrorLabel = new StudentsManager.Components.ErrorLabel();
+            this.LoginBtn = new StudentsManager.Components.CButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,22 +63,6 @@
             this.PasswordInput.Size = new System.Drawing.Size(258, 52);
             this.PasswordInput.TabIndex = 2;
             this.PasswordInput.Value = "";
-            // 
-            // LoginBtn
-            // 
-            this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
-            this.LoginBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
-            this.LoginBtn.FlatAppearance.BorderSize = 0;
-            this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoginBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LoginBtn.ForeColor = System.Drawing.Color.White;
-            this.LoginBtn.Location = new System.Drawing.Point(23, 328);
-            this.LoginBtn.Name = "LoginBtn";
-            this.LoginBtn.Size = new System.Drawing.Size(258, 52);
-            this.LoginBtn.TabIndex = 3;
-            this.LoginBtn.Text = "Log In";
-            this.LoginBtn.UseVisualStyleBackColor = false;
-            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // headerText1
             // 
@@ -110,11 +94,27 @@
             this.LoginFormErrorLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(60)))), ((int)(((byte)(94)))));
             this.LoginFormErrorLabel.Location = new System.Drawing.Point(20, 278);
             this.LoginFormErrorLabel.Name = "LoginFormErrorLabel";
-            this.LoginFormErrorLabel.Size = new System.Drawing.Size(261, 47);
+            this.LoginFormErrorLabel.Size = new System.Drawing.Size(261, 45);
             this.LoginFormErrorLabel.TabIndex = 8;
             this.LoginFormErrorLabel.Text = "Email or Password is invalid";
             this.LoginFormErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.LoginFormErrorLabel.Visible = false;
+            // 
+            // LoginBtn
+            // 
+            this.LoginBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(124)))), ((int)(((byte)(248)))));
+            this.LoginBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
+            this.LoginBtn.FlatAppearance.BorderSize = 0;
+            this.LoginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.LoginBtn.ForeColor = System.Drawing.Color.White;
+            this.LoginBtn.Location = new System.Drawing.Point(23, 326);
+            this.LoginBtn.Name = "LoginBtn";
+            this.LoginBtn.Size = new System.Drawing.Size(258, 52);
+            this.LoginBtn.TabIndex = 9;
+            this.LoginBtn.Text = "Sign In";
+            this.LoginBtn.UseVisualStyleBackColor = false;
+            this.LoginBtn.Click += new System.EventHandler(this.LoginBtn_Click);
             // 
             // LoginForm
             // 
@@ -123,10 +123,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(304, 401);
+            this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.LoginFormErrorLabel);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.headerText1);
-            this.Controls.Add(this.LoginBtn);
             this.Controls.Add(this.PasswordInput);
             this.Controls.Add(this.EmailInput);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -148,9 +148,9 @@
 
         private Components.TextBoxInput EmailInput;
         private Components.TextBoxInput PasswordInput;
-        private Components.CButton LoginBtn;
         private Components.HeaderText headerText1;
         private PictureBox pictureBox1;
         private Components.ErrorLabel LoginFormErrorLabel;
+        private Components.CButton LoginBtn;
     }
 }
