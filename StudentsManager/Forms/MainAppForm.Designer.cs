@@ -141,7 +141,7 @@
             this.ReadAllRecordsBtn.Name = "ReadAllRecordsBtn";
             this.ReadAllRecordsBtn.Size = new System.Drawing.Size(180, 32);
             this.ReadAllRecordsBtn.TabIndex = 17;
-            this.ReadAllRecordsBtn.Text = "Read All Records";
+            this.ReadAllRecordsBtn.Text = "Refresh Records";
             this.ReadAllRecordsBtn.UseVisualStyleBackColor = false;
             this.ReadAllRecordsBtn.Click += new System.EventHandler(this.ReadAllRecordsBtn_Click);
             // 
