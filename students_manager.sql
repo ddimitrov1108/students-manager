@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Време на генериране: 15 март 2022 в 10:12
+-- Време на генериране: 27 апр 2022 в 08:25
 -- Версия на сървъра: 10.4.21-MariaDB
 -- Версия на PHP: 8.0.11
 
@@ -102,8 +102,8 @@ CREATE TABLE `students` (
   `degreeId` int(11) NOT NULL,
   `specialtyId` int(11) NOT NULL,
   `formId` int(11) NOT NULL,
-  `eduYear` int(11) NOT NULL,
-  `eduGpa` double NOT NULL,
+  `year` int(11) NOT NULL,
+  `gpa` double NOT NULL,
   `eduPaused` tinyint(1) NOT NULL,
   `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
@@ -113,9 +113,8 @@ CREATE TABLE `students` (
 -- Схема на данните от таблица `students`
 --
 
-INSERT INTO `students` (`id`, `facultyNumber`, `firstName`, `lastName`, `phoneNumber`, `degreeId`, `specialtyId`, `formId`, `eduYear`, `eduGpa`, `eduPaused`, `updated_at`, `created_at`) VALUES
-(1, 19623345, 'Daniel', 'Dimitrov', '+395887575828', 1, 1, 2, 3, 5.14, 0, '2022-03-14 23:38:09', '2022-03-14 21:38:09'),
-(2, 19965197, 'Stoqno', 'Stoqnov', '+395880000000', 1, 2, 1, 4, 5.14, 1, '2022-03-14 23:38:09', '2022-03-14 21:38:09');
+INSERT INTO `students` (`id`, `facultyNumber`, `firstName`, `lastName`, `phoneNumber`, `degreeId`, `specialtyId`, `formId`, `year`, `gpa`, `eduPaused`, `updated_at`, `created_at`) VALUES
+(1, 19623345, 'Daniel', 'Dimitrov', '+395887575828', 1, 1, 2, 3, 5.14, 0, '2022-03-14 23:38:09', '2022-03-14 21:38:09');
 
 -- --------------------------------------------------------
 

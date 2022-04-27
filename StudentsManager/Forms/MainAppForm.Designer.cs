@@ -274,7 +274,6 @@
             this.faIcon3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.faIcon3.IconSize = 28;
             this.faIcon3.Location = new System.Drawing.Point(952, 12);
-            this.faIcon3.Margin = new System.Windows.Forms.Padding(3, 3, 10, 3);
             this.faIcon3.Name = "faIcon3";
             this.faIcon3.SetIconSize = 28;
             this.faIcon3.Size = new System.Drawing.Size(28, 28);
@@ -307,6 +306,7 @@
             this.faIcon2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.faIcon2.IconSize = 28;
             this.faIcon2.Location = new System.Drawing.Point(993, 12);
+            this.faIcon2.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.faIcon2.Name = "faIcon2";
             this.faIcon2.SetIconSize = 28;
             this.faIcon2.Size = new System.Drawing.Size(28, 28);
