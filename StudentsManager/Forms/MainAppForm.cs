@@ -32,6 +32,7 @@ namespace StudentsManager.Forms
                 Program.dbConnection.Open();
                 this.students.LoadDataFromDatabase();
                 Program.dbConnection.Close();
+                this.students.SortByFacultyNumber();
                 this.StudentsDataGrid.DataSource = this.students.GetCollection();
                 this.SetDataGridSettings();
             }
@@ -81,6 +82,11 @@ namespace StudentsManager.Forms
         private void DeleteSelectedRowBtn_Click(object sender, EventArgs e)
         {
             // @ TODO
+        }
+
+        private void LogOutFAIcon_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }
