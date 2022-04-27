@@ -85,7 +85,7 @@
             this.DeleteSelectedRowBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Error;
             this.DeleteSelectedRowBtn.FlatAppearance.BorderSize = 0;
             this.DeleteSelectedRowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.DeleteSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DeleteSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.DeleteSelectedRowBtn.ForeColor = System.Drawing.Color.White;
             this.DeleteSelectedRowBtn.Location = new System.Drawing.Point(20, 619);
             this.DeleteSelectedRowBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
@@ -101,7 +101,7 @@
             this.EditSelectedRowBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Secondary;
             this.EditSelectedRowBtn.FlatAppearance.BorderSize = 0;
             this.EditSelectedRowBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.EditSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.EditSelectedRowBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EditSelectedRowBtn.ForeColor = System.Drawing.Color.White;
             this.EditSelectedRowBtn.Location = new System.Drawing.Point(20, 567);
             this.EditSelectedRowBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
@@ -117,7 +117,7 @@
             this.AddNewRecordBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Success;
             this.AddNewRecordBtn.FlatAppearance.BorderSize = 0;
             this.AddNewRecordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddNewRecordBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AddNewRecordBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.AddNewRecordBtn.ForeColor = System.Drawing.Color.White;
             this.AddNewRecordBtn.Location = new System.Drawing.Point(20, 515);
             this.AddNewRecordBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
@@ -134,7 +134,7 @@
             this.ReadAllRecordsBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.ReadAllRecordsBtn.FlatAppearance.BorderSize = 0;
             this.ReadAllRecordsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ReadAllRecordsBtn.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ReadAllRecordsBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.ReadAllRecordsBtn.ForeColor = System.Drawing.Color.White;
             this.ReadAllRecordsBtn.Location = new System.Drawing.Point(20, 463);
             this.ReadAllRecordsBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
@@ -151,7 +151,7 @@
             this.cButton1.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.cButton1.FlatAppearance.BorderSize = 0;
             this.cButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cButton1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cButton1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.cButton1.ForeColor = System.Drawing.Color.White;
             this.cButton1.Location = new System.Drawing.Point(110, 342);
             this.cButton1.Name = "cButton1";
@@ -291,7 +291,7 @@
             this.WelcomeHeaderText.Location = new System.Drawing.Point(20, 0);
             this.WelcomeHeaderText.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.WelcomeHeaderText.Name = "WelcomeHeaderText";
-            this.WelcomeHeaderText.Size = new System.Drawing.Size(480, 50);
+            this.WelcomeHeaderText.Size = new System.Drawing.Size(369, 50);
             this.WelcomeHeaderText.TabIndex = 2;
             this.WelcomeHeaderText.Text = "Welcome back, Daniel Dimitrov";
             this.WelcomeHeaderText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

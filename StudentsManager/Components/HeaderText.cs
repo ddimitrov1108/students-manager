@@ -21,11 +21,11 @@ namespace StudentsManager.Components
 
             switch (this.headerType)
             {
-                case HeaderType.XSmall: this.Font = new Font("Poppins", (float)9.75, FontStyle.Bold); break;
-                case HeaderType.Small: this.Font = new Font("Poppins", (float)10.72, FontStyle.Bold); break; 
-                case HeaderType.Normal: this.Font = new Font("Poppins", (float)13.28, FontStyle.Bold); break; 
+                case HeaderType.XSmall: this.Font = new Font("Poppins", 9.75f, FontStyle.Bold); break;
+                case HeaderType.Small: this.Font = new Font("Poppins", 10.72f, FontStyle.Bold); break; 
+                case HeaderType.Normal: this.Font = new Font("Poppins", 13.28f, FontStyle.Bold); break; 
                 case HeaderType.Large: this.Font = new Font("Poppins", 16, FontStyle.Bold); break;
-                case HeaderType.XLarge: this.Font = new Font("Poppins", (float) 18.72, FontStyle.Bold); break;
+                case HeaderType.XLarge: this.Font = new Font("Poppins", 18.72f, FontStyle.Bold); break;
             }
         }
 
