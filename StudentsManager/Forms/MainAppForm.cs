@@ -7,6 +7,7 @@ namespace StudentsManager.Forms
     {
         private User loggedUser;
         private StudentsList students;
+        private int selectedDataGridRow = -1;
         public MainAppForm(User user)
         {
             this.loggedUser = user;
@@ -32,9 +33,15 @@ namespace StudentsManager.Forms
                 Program.dbConnection.Open();
                 this.students.LoadDataFromDatabase();
                 Program.dbConnection.Close();
+
                 this.students.SortByFacultyNumber();
                 this.StudentsDataGrid.DataSource = this.students.GetCollection();
                 this.SetDataGridSettings();
+
+                if (this.students.Count > 0)
+                    this.selectedDataGridRow = 0;
+                else
+                    this.selectedDataGridRow = -1;
             }
             catch (MySqlException ex)
             {
@@ -89,7 +96,7 @@ namespace StudentsManager.Forms
             Application.Restart();
         }
 
-        private void cButton1_Click(object sender, EventArgs e)
+        private void SearchBtn_Click(object sender, EventArgs e)
         {
 
         }
