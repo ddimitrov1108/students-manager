@@ -77,7 +77,7 @@ namespace StudentsManager.Classes
                     " FROM students" +
                         " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
                         " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
-                        " INNER JOIN edu_forms ON students.formId = edu_forms.id";
+                        " INNER JOIN edu_forms ON students.formId = edu_forms.id ORDER BY facultyNumber DESC";
 
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 

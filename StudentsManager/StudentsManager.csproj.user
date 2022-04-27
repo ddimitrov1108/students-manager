@@ -28,5 +28,8 @@
     <Compile Update="Forms\MainAppForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\StudentsDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

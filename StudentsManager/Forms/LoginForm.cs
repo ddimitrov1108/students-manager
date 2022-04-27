@@ -50,16 +50,17 @@ namespace StudentsManager.Forms
                                 }
                                 else
                                 {
+                                    SystemSounds.Beep.Play();
                                     LoginFormErrorLabel.Text = "Email or password is incorrect";
                                     LoginFormErrorLabel.Visible = true;
-                                    SystemSounds.Beep.Play();
+
                                 }
                             }
                             else
                             {
+                                SystemSounds.Beep.Play();
                                 LoginFormErrorLabel.Text = "No account associated with this email";
                                 LoginFormErrorLabel.Visible = true;
-                                SystemSounds.Beep.Play();
                             }
 
                             dataReader.Close();
@@ -75,9 +76,9 @@ namespace StudentsManager.Forms
                 }
                 else
                 {
+                    SystemSounds.Beep.Play();
                     LoginFormErrorLabel.Text = "Email or password is invalid";
                     LoginFormErrorLabel.Visible = true;
-                    SystemSounds.Beep.Play();
                 }
             }
             else
