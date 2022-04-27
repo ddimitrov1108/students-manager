@@ -21,7 +21,7 @@ namespace StudentsManager.Components
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
             this.Cursor = Cursors.Hand;
-            this.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+            this.Font = new Font("Segoe UI", 11, FontStyle.Bold);
         }
 
         private GraphicsPath GetFigurePath(Rectangle rect, float radius)

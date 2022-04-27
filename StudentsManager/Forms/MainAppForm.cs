@@ -88,5 +88,10 @@ namespace StudentsManager.Forms
         {
             Application.Restart();
         }
+
+        private void cButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
