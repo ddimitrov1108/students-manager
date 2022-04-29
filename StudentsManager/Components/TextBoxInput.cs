@@ -59,5 +59,11 @@ namespace StudentsManager.Components
                 this.Invalidate();
             }
         }
+
+        public bool ReadOnly 
+        {
+            get => this.textInput.ReadOnly;
+            set => this.textInput.ReadOnly = value; 
+        }
     }
 }

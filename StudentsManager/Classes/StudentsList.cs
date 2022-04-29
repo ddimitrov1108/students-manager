@@ -67,45 +67,53 @@ namespace StudentsManager.Classes
 
         public int LoadDataFromDatabase()
         {
-            using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
+            try
             {
-                cmd.CommandText =
-                    "SELECT" +
-                        " facultyNumber, firstName, lastName, phoneNumber," +
-                        " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
-                        " year, gpa, eduPaused" +
-                    " FROM students" +
-                        " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
-                        " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
-                        " INNER JOIN edu_forms ON students.formId = edu_forms.id ORDER BY facultyNumber DESC";
-
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-
-                if (dataReader.HasRows)
+                using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
-                    this.studentsList = new List<Student>();
+                    cmd.CommandText =
+                        "SELECT" +
+                            " facultyNumber, firstName, lastName, phoneNumber," +
+                            " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
+                            " year, gpa, eduPaused" +
+                        " FROM students" +
+                            " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
+                            " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
+                            " INNER JOIN edu_forms ON students.formId = edu_forms.id ORDER BY facultyNumber DESC";
 
-                    while (dataReader.Read())
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                    if (dataReader.HasRows)
                     {
-                        this.studentsList.Add(new Student(
-                            dataReader.GetString("facultyNumber"),
-                            dataReader.GetString("firstName"),
-                            dataReader.GetString("lastName"),
-                            dataReader.GetString("phoneNumber"),
-                            dataReader.GetString("degree"),
-                            dataReader.GetString("specialty"),
-                            dataReader.GetString("form"),
-                            dataReader.GetInt32("year"),
-                            dataReader.GetDouble("gpa"),
-                            dataReader.GetBoolean("EduPaused")
-                        ));
+                        this.studentsList = new List<Student>();
+
+                        while (dataReader.Read())
+                        {
+                            this.studentsList.Add(new Student(
+                                dataReader.GetString("facultyNumber"),
+                                dataReader.GetString("firstName"),
+                                dataReader.GetString("lastName"),
+                                dataReader.GetString("phoneNumber"),
+                                dataReader.GetString("degree"),
+                                dataReader.GetString("specialty"),
+                                dataReader.GetString("form"),
+                                dataReader.GetInt32("year"),
+                                dataReader.GetDouble("gpa"),
+                                dataReader.GetBoolean("EduPaused")
+                            ));
+                        }
+
+                        dataReader.Close();
+                        return 1;
                     }
 
                     dataReader.Close();
-                    return 1;
+                    return 0;
                 }
-
-                dataReader.Close();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }

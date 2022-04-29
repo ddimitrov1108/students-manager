@@ -58,7 +58,6 @@ namespace StudentsManager.Forms
             {
                 this.selectedDataGridRow = 0;
             }
-                
             else
             {
                 this.selectedDataGridRow = -1;
@@ -139,6 +138,7 @@ namespace StudentsManager.Forms
             Student newStudent = new Student("19623346", "test", "test", "test", "test", "test", "test", 1, 1, false);
             newStudent.Create(1, 1, 2);
             this.studentsCollection.AddElement(newStudent);
+            new StudentsDetailsForm(this.studentsCollection).Visible = true;
             this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
             this.UpdateDataGridInfo();
             Program.dbConnection.Close();
@@ -147,6 +147,7 @@ namespace StudentsManager.Forms
         private void EditSelectedRowBtn_Click(object sender, EventArgs e)
         {
             // @ TODO
+
         }
 
         private void DeleteSelectedRowBtn_Click(object sender, EventArgs e)

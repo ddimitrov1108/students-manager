@@ -186,6 +186,7 @@
             this.ToFacultyNumberInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.ToFacultyNumberInput.MaxLength = 20;
             this.ToFacultyNumberInput.Name = "ToFacultyNumberInput";
+            this.ToFacultyNumberInput.ReadOnly = false;
             this.ToFacultyNumberInput.Size = new System.Drawing.Size(180, 52);
             this.ToFacultyNumberInput.TabIndex = 4;
             this.ToFacultyNumberInput.Value = "";
@@ -199,6 +200,7 @@
             this.FromFacultyNumberInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.FromFacultyNumberInput.MaxLength = 20;
             this.FromFacultyNumberInput.Name = "FromFacultyNumberInput";
+            this.FromFacultyNumberInput.ReadOnly = false;
             this.FromFacultyNumberInput.Size = new System.Drawing.Size(180, 52);
             this.FromFacultyNumberInput.TabIndex = 3;
             this.FromFacultyNumberInput.Value = "";
@@ -238,6 +240,7 @@
             this.QuickSearchFacNumberInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.QuickSearchFacNumberInput.MaxLength = 20;
             this.QuickSearchFacNumberInput.Name = "QuickSearchFacNumberInput";
+            this.QuickSearchFacNumberInput.ReadOnly = false;
             this.QuickSearchFacNumberInput.Size = new System.Drawing.Size(180, 52);
             this.QuickSearchFacNumberInput.TabIndex = 1;
             this.QuickSearchFacNumberInput.Value = "";
