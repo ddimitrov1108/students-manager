@@ -63,3 +63,4 @@ C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\
 C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.genruntimeconfig.cache
 C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\ref\StudentsManager.dll
 C:\Users\User\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Forms.StudentsDetailsForm.resources
+C:\Users\ddimi\Desktop\students_manager\StudentsManager\obj\Debug\net6.0-windows\StudentsManager.Forms.StudentsDetailsForm.resources

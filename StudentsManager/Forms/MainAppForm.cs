@@ -40,9 +40,10 @@ namespace StudentsManager.Forms
                 Program.dbConnection.Open();
                 this.studentsCollection.LoadDataFromDatabase();
                 this.studentsCollection.SortByFacultyNumber();
+                this.StudentsDataGrid.DataSource = null;
                 this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
-                this.SetDataGridSettings();
                 this.UpdateDataGridInfo();
+                this.SetDataGridSettings();
                 Program.dbConnection.Close();
             }
             catch (MySqlException ex)
@@ -138,9 +139,11 @@ namespace StudentsManager.Forms
             Student newStudent = new Student("19623346", "test", "test", "test", "test", "test", "test", 1, 1, false);
             newStudent.Create(1, 1, 2);
             this.studentsCollection.AddElement(newStudent);
-            new StudentsDetailsForm(this.studentsCollection).Visible = true;
+            this.StudentsDataGrid.DataSource = null;
+            new StudentsDetailsForm(null).ShowDialog();
             this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
             this.UpdateDataGridInfo();
+            this.SetDataGridSettings();
             Program.dbConnection.Close();
         }
 
@@ -165,15 +168,17 @@ namespace StudentsManager.Forms
                 Program.dbConnection.Open();
                 this.studentsCollection.ElementAt(selectedDataGridRow).Delete();
                 this.studentsCollection.RemoveAt(selectedDataGridRow);
+                this.StudentsDataGrid.DataSource = null;
                 this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
                 this.UpdateDataGridInfo();
+                this.SetDataGridSettings();
                 Program.dbConnection.Close();
             }
         }
 
         private void StudentsDataGrid_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if(e.StateChanged == DataGridViewElementStates.Selected)
+            if (e.StateChanged == DataGridViewElementStates.Selected)
             {
                 if (e.Row.Index != -1 && e.Row.Index < this.studentsCollection.Count)
                 {
@@ -182,13 +187,13 @@ namespace StudentsManager.Forms
                     this.EditSelectedRowBtn.Enabled = true;
                     this.DeleteSelectedRowBtn.Enabled = true;
                 }
-                else
-                {
-                    this.selectedDataGridRow = -1;
-                    this.SelectedRowInfo.Text = "Selected Row: None";
-                    this.EditSelectedRowBtn.Enabled = false;
-                    this.DeleteSelectedRowBtn.Enabled = false;
-                }
+            }
+            else
+            {
+                this.selectedDataGridRow = -1;
+                this.SelectedRowInfo.Text = "Selected Row: None";
+                this.EditSelectedRowBtn.Enabled = false;
+                this.DeleteSelectedRowBtn.Enabled = false;
             }
         }
     }

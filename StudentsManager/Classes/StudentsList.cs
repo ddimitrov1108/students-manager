@@ -34,7 +34,14 @@ namespace StudentsManager.Classes
             if (index < 0 || index >= this.studentsList.Count)
                 return -1;
 
-            this.studentsList.RemoveAt(index);
+            Student studentToRemove = this.studentsList.ElementAt(index);
+
+            for(int i = 0; i < this.studentsList.Count; i++)
+            {
+                if (this.studentsList.ElementAt(i).FacultyNumber == studentToRemove.FacultyNumber)
+                    this.studentsList.RemoveAt(i);
+            }
+
             return 1;
         }
 

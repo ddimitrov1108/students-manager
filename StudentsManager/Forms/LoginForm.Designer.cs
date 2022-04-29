@@ -47,6 +47,7 @@
             this.EmailInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.EmailInput.MaxLength = 60;
             this.EmailInput.Name = "EmailInput";
+            this.EmailInput.ReadOnly = false;
             this.EmailInput.Size = new System.Drawing.Size(258, 52);
             this.EmailInput.TabIndex = 1;
             this.EmailInput.Value = "";
@@ -60,6 +61,7 @@
             this.PasswordInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
             this.PasswordInput.MaxLength = 20;
             this.PasswordInput.Name = "PasswordInput";
+            this.PasswordInput.ReadOnly = false;
             this.PasswordInput.Size = new System.Drawing.Size(258, 52);
             this.PasswordInput.TabIndex = 2;
             this.PasswordInput.Value = "";

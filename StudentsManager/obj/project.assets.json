@@ -5418,19 +5418,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\ddimi\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
+      "projectUniqueName": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
       "projectName": "StudentsManager",
-      "projectPath": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\obj\\",
+      "projectPath": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
+      "packagesPath": "C:\\Users\\ddimi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ddimi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
