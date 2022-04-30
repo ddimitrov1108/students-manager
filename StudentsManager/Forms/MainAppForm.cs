@@ -9,16 +9,13 @@ namespace StudentsManager.Forms
     {
         private User loggedUser;
         private StudentsList studentsCollection;
-        private int selectedDataGridRow = -1;
+        private int selectedStudentRow = -1;
         public MainAppForm(User user)
         {
-            this.loggedUser = user;
-            this.studentsCollection = new StudentsList(); 
             InitializeComponent();
-        }
 
-        private void MainAppForm_Load(object sender, EventArgs e)
-        {
+            this.loggedUser = user;
+            this.studentsCollection = new StudentsList();
             this.WelcomeHeaderText.Text = $"Welcome back, {this.loggedUser.Name}";
             this.ReadAllStudents();
         }
@@ -39,11 +36,7 @@ namespace StudentsManager.Forms
             {
                 Program.dbConnection.Open();
                 this.studentsCollection.LoadDataFromDatabase();
-                this.studentsCollection.SortByFacultyNumber();
-                this.StudentsDataGrid.DataSource = null;
-                this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
-                this.UpdateDataGridInfo();
-                this.SetDataGridSettings();
+                this.SetDataGridSource();
                 Program.dbConnection.Close();
             }
             catch (MySqlException ex)
@@ -53,15 +46,24 @@ namespace StudentsManager.Forms
             }
         }
 
+        private void SetDataGridSource()
+        {
+            this.StudentsDataGrid.DataSource = null;
+            this.studentsCollection.SortByFacultyNumber();
+            this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
+            this.UpdateDataGridInfo();
+            this.SetDataGridSettings();
+        }
+
         private void UpdateDataGridInfo()
         {
             if (this.studentsCollection.Count > 0)
             {
-                this.selectedDataGridRow = 0;
+                this.selectedStudentRow = 0;
             }
             else
             {
-                this.selectedDataGridRow = -1;
+                this.selectedStudentRow = -1;
             }       
         }
 
@@ -134,29 +136,20 @@ namespace StudentsManager.Forms
 
         private void AddNewRecordBtn_Click(object sender, EventArgs e)
         {
-            // @ TODO
-            Program.dbConnection.Open();
-            Student newStudent = new Student("19623346", "test", "test", "test", "test", "test", "test", 1, 1, false);
-            newStudent.Create(1, 1, 2);
-            this.studentsCollection.AddElement(newStudent);
-            this.StudentsDataGrid.DataSource = null;
-            new StudentsDetailsForm(null).ShowDialog();
-            this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
-            this.UpdateDataGridInfo();
-            this.SetDataGridSettings();
-            Program.dbConnection.Close();
+            new StudentsDetailsForm(this.studentsCollection).ShowDialog();
+            this.SetDataGridSource();
         }
 
         private void EditSelectedRowBtn_Click(object sender, EventArgs e)
         {
-            // @ TODO
-
+            new StudentsDetailsForm(this.studentsCollection, 1, this.selectedStudentRow).ShowDialog();
+            this.SetDataGridSource();
         }
 
         private void DeleteSelectedRowBtn_Click(object sender, EventArgs e)
         {
             // @ TODO
-            Student studentToDelete = this.studentsCollection.ElementAt(selectedDataGridRow);
+            Student studentToDelete = this.studentsCollection.ElementAt(selectedStudentRow);
 
             DialogResult dialogResult = MessageBox.Show(
                     $"Are you sure that you want to delete student with faculty number: {studentToDelete.FacultyNumber}",
@@ -166,12 +159,9 @@ namespace StudentsManager.Forms
             if (dialogResult == DialogResult.Yes)
             {
                 Program.dbConnection.Open();
-                this.studentsCollection.ElementAt(selectedDataGridRow).Delete();
-                this.studentsCollection.RemoveAt(selectedDataGridRow);
-                this.StudentsDataGrid.DataSource = null;
-                this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
-                this.UpdateDataGridInfo();
-                this.SetDataGridSettings();
+                this.studentsCollection.ElementAt(selectedStudentRow).Delete();
+                this.studentsCollection.RemoveAt(selectedStudentRow);
+                this.SetDataGridSource();
                 Program.dbConnection.Close();
             }
         }
@@ -182,15 +172,15 @@ namespace StudentsManager.Forms
             {
                 if (e.Row.Index != -1 && e.Row.Index < this.studentsCollection.Count)
                 {
-                    this.selectedDataGridRow = e.Row.Index;
-                    this.SelectedRowInfo.Text = $"Selected Row: {this.studentsCollection.ElementAt(this.selectedDataGridRow).FacultyNumber}";
+                    this.selectedStudentRow = e.Row.Index;
+                    this.SelectedRowInfo.Text = $"Selected Row: {this.studentsCollection.ElementAt(this.selectedStudentRow).FacultyNumber}";
                     this.EditSelectedRowBtn.Enabled = true;
                     this.DeleteSelectedRowBtn.Enabled = true;
                 }
             }
             else
             {
-                this.selectedDataGridRow = -1;
+                this.selectedStudentRow = -1;
                 this.SelectedRowInfo.Text = "Selected Row: None";
                 this.EditSelectedRowBtn.Enabled = false;
                 this.DeleteSelectedRowBtn.Enabled = false;

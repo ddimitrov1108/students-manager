@@ -76,8 +76,8 @@
             // StudentsDetailsBtn
             // 
             this.StudentsDetailsBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.StudentsDetailsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(255)))));
-            this.StudentsDetailsBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Secondary;
+            this.StudentsDetailsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(230)))), ((int)(((byte)(118)))));
+            this.StudentsDetailsBtn.ColorSelected = StudentsManager.Components.Classes.ColorType.Success;
             this.StudentsDetailsBtn.FlatAppearance.BorderSize = 0;
             this.StudentsDetailsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StudentsDetailsBtn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -86,7 +86,7 @@
             this.StudentsDetailsBtn.Name = "StudentsDetailsBtn";
             this.StudentsDetailsBtn.Size = new System.Drawing.Size(348, 52);
             this.StudentsDetailsBtn.TabIndex = 11;
-            this.StudentsDetailsBtn.Text = "Edit Record";
+            this.StudentsDetailsBtn.Text = "Create New Student Record";
             this.StudentsDetailsBtn.UseVisualStyleBackColor = false;
             // 
             // headerText1
@@ -99,7 +99,7 @@
             this.headerText1.Name = "headerText1";
             this.headerText1.Size = new System.Drawing.Size(320, 32);
             this.headerText1.TabIndex = 5;
-            this.headerText1.Text = "New Student Record";
+            this.headerText1.Text = "Creating New Student Record";
             this.headerText1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FacultyNumberInput
@@ -111,7 +111,7 @@
             this.FacultyNumberInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.FacultyNumberInput.MaxLength = 20;
             this.FacultyNumberInput.Name = "FacultyNumberInput";
-            this.FacultyNumberInput.ReadOnly = true;
+            this.FacultyNumberInput.ReadOnly = false;
             this.FacultyNumberInput.Size = new System.Drawing.Size(348, 52);
             this.FacultyNumberInput.TabIndex = 1;
             this.FacultyNumberInput.Value = "";
@@ -233,6 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(394, 594);
             this.Controls.Add(this.EduPausedCheckbox);
@@ -251,10 +252,13 @@
             this.Controls.Add(this.FirstNameInput);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StudentsDetailsForm";
             this.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "6";
+            this.Text = "Creating New Student Record";
             ((System.ComponentModel.ISupportInitialize)(this.faIcon2)).EndInit();
             this.ResumeLayout(false);
 

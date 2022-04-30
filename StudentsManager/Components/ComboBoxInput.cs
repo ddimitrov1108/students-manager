@@ -25,7 +25,7 @@ namespace StudentsManager.Components
         public void InputFocus() => this.comboInput.Focus();
 
         public override string Text { get => this.comboInput.Text; }
-        public string? Value { get => this.comboInput.SelectedValue.ToString(); }
+        public int Value { get => int.Parse(this.comboInput.SelectedValue.ToString()); }
 
         public void SetActiveItem(string? listItem)
         {
@@ -33,11 +33,11 @@ namespace StudentsManager.Components
                 this.comboInput.SelectedIndex = this.comboInput.FindStringExact(listItem);
         }
 
-        public void SetListItems(DataTable table, string valueMember, string displayMember)
+        public void SetListItems(DataTable table)
         {
             this.comboInput.DataSource = table;
-            this.comboInput.ValueMember = valueMember;
-            this.comboInput.DisplayMember = displayMember;
+            this.comboInput.ValueMember = table.Columns[0].ColumnName;
+            this.comboInput.DisplayMember = table.Columns[1].ColumnName;
         }
 
         public void AddItem(string item) => this.comboInput.Items.Add(item);
