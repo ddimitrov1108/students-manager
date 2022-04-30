@@ -49,16 +49,16 @@ namespace StudentsManager.Classes
             return null;
         }
 
-        public StudentsList? SearchByFacultyNumber(string _fromFacNum, string _ToFacNum)
+        public List<Student> SearchByFacultyNumber(string _fromFacNum, string _toFacNum)
         {
-            StudentsList tempStudentsList = new StudentsList();
+            List<Student> tempStudentsList = new List<Student>();
 
-            foreach(Student studentObject in this.studentsList)
+            foreach (Student studentObject in this.studentsList)
             {
                 if (studentObject.FacultyNumber != null && studentObject.FacultyNumber != "")
                 {
-                    if (studentObject.FacultyNumber.CompareTo(_fromFacNum) >= 0 && studentObject.FacultyNumber.CompareTo(_ToFacNum) <= 1)
-                        tempStudentsList.AddElement(studentObject);
+                    if (studentObject.CompareTo(new Student(_fromFacNum)) >= 0 && studentObject.CompareTo(new Student(_toFacNum)) < 1)
+                        tempStudentsList.Add(studentObject);
                 }
             }
 
@@ -69,13 +69,14 @@ namespace StudentsManager.Classes
         {
             try
             {
+                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
                         "SELECT" +
                             " facultyNumber, firstName, lastName, phoneNumber," +
                             " edu_degree_types.degree, edu_specialties.specialty, edu_forms.form," +
-                            " year, gpa, eduPaused" +
+                            " year, gpa" +
                         " FROM students" +
                             " INNER JOIN edu_degree_types ON students.degreeId = edu_degree_types.id" +
                             " INNER JOIN edu_specialties ON students.specialtyId = edu_specialties.id" +
@@ -98,15 +99,16 @@ namespace StudentsManager.Classes
                                 dataReader.GetString("specialty"),
                                 dataReader.GetString("form"),
                                 dataReader.GetInt32("year"),
-                                dataReader.GetDouble("gpa"),
-                                dataReader.GetBoolean("EduPaused")
+                                dataReader.GetDouble("gpa")
                             ));
                         }
 
+                        Program.dbConnection.Close();
                         dataReader.Close();
                         return 1;
                     }
 
+                    Program.dbConnection.Close();
                     dataReader.Close();
                     return 0;
                 }
@@ -114,6 +116,7 @@ namespace StudentsManager.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Program.dbConnection.Close();
                 return 0;
             }
         }

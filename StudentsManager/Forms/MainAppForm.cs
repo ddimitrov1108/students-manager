@@ -34,15 +34,12 @@ namespace StudentsManager.Forms
         {
             try
             {
-                Program.dbConnection.Open();
                 this.studentsCollection.LoadDataFromDatabase();
                 this.SetDataGridSource();
-                Program.dbConnection.Close();
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
             }
         }
 
@@ -60,11 +57,10 @@ namespace StudentsManager.Forms
             if (this.studentsCollection.Count > 0)
             {
                 this.selectedStudentRow = 0;
+                this.StudentsDataGrid.Rows[selectedStudentRow].Selected = true;
             }
             else
-            {
-                this.selectedStudentRow = -1;
-            }       
+                this.selectedStudentRow = -1;  
         }
 
         private void SetDataGridSettings()
@@ -81,9 +77,6 @@ namespace StudentsManager.Forms
             this.StudentsDataGrid.Columns[6].HeaderText = "Form";
             this.StudentsDataGrid.Columns[7].HeaderText = "Year";
             this.StudentsDataGrid.Columns[8].HeaderText = "GPA";
-
-            if (this.StudentsDataGrid.Columns.Contains("EducationPaused"))
-                this.StudentsDataGrid.Columns.Remove("EducationPaused");
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)
@@ -112,7 +105,11 @@ namespace StudentsManager.Forms
             {
                 if(new Regex(@"^\d+$").IsMatch(this.FromFacultyNumberInput.Value) && new Regex(@"^\d+$").IsMatch(this.ToFacultyNumberInput.Value))
                 {
-
+                    MessageBox.Show("Test");
+                    this.StudentsDataGrid.DataSource = this.studentsCollection.SearchByFacultyNumber(
+                        this.FromFacultyNumberInput.Value,
+                        this.ToFacultyNumberInput.Value
+                    );
                 }
                 else 
                 {
@@ -158,11 +155,9 @@ namespace StudentsManager.Forms
                 );
             if (dialogResult == DialogResult.Yes)
             {
-                Program.dbConnection.Open();
                 this.studentsCollection.ElementAt(selectedStudentRow).Delete();
                 this.studentsCollection.RemoveAt(selectedStudentRow);
                 this.SetDataGridSource();
-                Program.dbConnection.Close();
             }
         }
 

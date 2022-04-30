@@ -68,9 +68,6 @@ namespace StudentsManager.Forms
                     this.EduFormCombo.SetActiveItem(studentToEdit.FormType);
                     this.EduYearInput.Value = studentToEdit.Year.ToString();
                     this.EduGpaInput.Value = studentToEdit.Gpa.ToString();
-                    this.EduPausedCheckbox.Checked = studentToEdit.EducationPaused;
-
-                    MessageBox.Show($"{studentToEdit.DegreeType} {studentToEdit.SpecialtyName} {studentToEdit.FormType}");
 
                     this.StudentsDetailsBtn.Click += new EventHandler((s, e) =>
                     {
@@ -84,8 +81,6 @@ namespace StudentsManager.Forms
 
                             try
                             {
-                                Program.dbConnection.Open();
-
                                 studentToEdit.Update(
                                     this.EduTypeCombo.Value,
                                     this.EduSpecialtyCombo.Value,
@@ -93,12 +88,10 @@ namespace StudentsManager.Forms
                                 );
 
                                 studentToEdit.Read();
-                                Program.dbConnection.Close();
                             } 
                             catch(MySqlException ex)
                             {
                                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                Program.dbConnection.Close();
                             }
 
                             this.Close();
@@ -120,6 +113,30 @@ namespace StudentsManager.Forms
             {
                 this.StudentsDetailsBtn.Click += new EventHandler((s, e) =>
                 {
+                    Program.dbConnection.Open();
+                    bool doesRecordExists = false;
+
+                    using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
+                    {
+                        cmd.CommandText = "SELECT 1 FROM students WHERE facultyNumber = ?facNum LIMIT 1";
+                        cmd.Parameters.AddWithValue("?facNum", this.FacultyNumberInput.Value);
+                        MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                        if (dataReader.HasRows)
+                            doesRecordExists = true;
+
+                        dataReader.Close();
+                    }
+
+                    Program.dbConnection.Close();
+
+                    if(doesRecordExists)
+                    {
+                        SystemSounds.Hand.Play();
+                        MessageBox.Show("Student with this faculty number already exists!", "Faculty Number Dup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     if (ValidateFormInputs())
                     {
                         Student newStudent = new Student(
@@ -129,11 +146,9 @@ namespace StudentsManager.Forms
                             this.PhoneNumberInput.Value,
                             "", "", "",
                             int.Parse(this.EduYearInput.Value),
-                            double.Parse(this.EduGpaInput.Value),
-                            this.EduPausedCheckbox.Checked
+                            double.Parse(this.EduGpaInput.Value)
                         );
 
-                        Program.dbConnection.Open();
                         newStudent.Create(
                             this.EduTypeCombo.Value,
                             this.EduSpecialtyCombo.Value,
@@ -141,8 +156,6 @@ namespace StudentsManager.Forms
                         );
 
                         newStudent.Read();
-                        Program.dbConnection.Close();
-
                         studentsCollection.AddElement(newStudent);
                         this.Close();
                     }

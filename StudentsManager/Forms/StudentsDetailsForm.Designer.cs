@@ -41,7 +41,6 @@
             this.EduFormCombo = new StudentsManager.Components.ComboBoxInput();
             this.EduYearInput = new StudentsManager.Components.TextBoxInput();
             this.EduGpaInput = new StudentsManager.Components.TextBoxInput();
-            this.EduPausedCheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.faIcon2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,28 +174,28 @@
             // 
             this.EduSpecialtyCombo.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.EduSpecialtyCombo.HeaderText = "Specialty";
-            this.EduSpecialtyCombo.Location = new System.Drawing.Point(211, 310);
+            this.EduSpecialtyCombo.Location = new System.Drawing.Point(23, 382);
             this.EduSpecialtyCombo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.EduSpecialtyCombo.Name = "EduSpecialtyCombo";
-            this.EduSpecialtyCombo.Size = new System.Drawing.Size(160, 52);
-            this.EduSpecialtyCombo.TabIndex = 6;
+            this.EduSpecialtyCombo.Size = new System.Drawing.Size(348, 52);
+            this.EduSpecialtyCombo.TabIndex = 7;
             // 
             // EduFormCombo
             // 
             this.EduFormCombo.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.EduFormCombo.HeaderText = "Form";
-            this.EduFormCombo.Location = new System.Drawing.Point(23, 382);
+            this.EduFormCombo.Location = new System.Drawing.Point(211, 310);
             this.EduFormCombo.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.EduFormCombo.Name = "EduFormCombo";
             this.EduFormCombo.Size = new System.Drawing.Size(160, 52);
-            this.EduFormCombo.TabIndex = 7;
+            this.EduFormCombo.TabIndex = 6;
             // 
             // EduYearInput
             // 
             this.EduYearInput.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.EduYearInput.HeaderText = "Year";
             this.EduYearInput.IsPasswordField = false;
-            this.EduYearInput.Location = new System.Drawing.Point(211, 382);
+            this.EduYearInput.Location = new System.Drawing.Point(23, 454);
             this.EduYearInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.EduYearInput.MaxLength = 20;
             this.EduYearInput.Name = "EduYearInput";
@@ -210,7 +209,7 @@
             this.EduGpaInput.ColorSelected = StudentsManager.Components.Classes.ColorType.Primary;
             this.EduGpaInput.HeaderText = "GPA";
             this.EduGpaInput.IsPasswordField = false;
-            this.EduGpaInput.Location = new System.Drawing.Point(23, 454);
+            this.EduGpaInput.Location = new System.Drawing.Point(211, 454);
             this.EduGpaInput.Margin = new System.Windows.Forms.Padding(0, 0, 0, 20);
             this.EduGpaInput.MaxLength = 20;
             this.EduGpaInput.Name = "EduGpaInput";
@@ -219,16 +218,6 @@
             this.EduGpaInput.TabIndex = 9;
             this.EduGpaInput.Value = "";
             // 
-            // EduPausedCheckbox
-            // 
-            this.EduPausedCheckbox.Font = new System.Drawing.Font("Poppins", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.EduPausedCheckbox.Location = new System.Drawing.Point(204, 473);
-            this.EduPausedCheckbox.Name = "EduPausedCheckbox";
-            this.EduPausedCheckbox.Size = new System.Drawing.Size(167, 33);
-            this.EduPausedCheckbox.TabIndex = 10;
-            this.EduPausedCheckbox.Text = "Paused";
-            this.EduPausedCheckbox.UseVisualStyleBackColor = true;
-            // 
             // StudentsDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -236,7 +225,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(394, 594);
-            this.Controls.Add(this.EduPausedCheckbox);
             this.Controls.Add(this.EduGpaInput);
             this.Controls.Add(this.EduYearInput);
             this.Controls.Add(this.EduFormCombo);
@@ -279,6 +267,5 @@
         private Components.ComboBoxInput EduFormCombo;
         private Components.TextBoxInput EduYearInput;
         private Components.TextBoxInput EduGpaInput;
-        private CheckBox EduPausedCheckbox;
     }
 }
