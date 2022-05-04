@@ -174,7 +174,7 @@ namespace StudentsManager.Forms
                 !string.IsNullOrWhiteSpace(this.FacultyNumberInput.Value) && !string.IsNullOrWhiteSpace(this.FirstNameInput.Value)
                 && !string.IsNullOrWhiteSpace(this.LastNameInput.Value) && !string.IsNullOrWhiteSpace(this.PhoneNumberInput.Value)
                 && (int.Parse(this.EduYearInput.Value) > 0 && int.Parse(this.EduYearInput.Value) <= 4)
-                && (double.Parse(this.EduGpaInput.Value) > 2.0f && double.Parse(this.EduGpaInput.Value) <= 6.0f)
+                && (double.Parse(this.EduGpaInput.Value) >= 2.0f && double.Parse(this.EduGpaInput.Value) <= 6.0f)
             );
         }
 
