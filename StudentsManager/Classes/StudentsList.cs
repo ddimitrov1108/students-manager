@@ -12,10 +12,9 @@ namespace StudentsManager.Classes
         public StudentsList(StudentsList studentListObject) =>
             this.studentsList = new List<Student>(studentListObject.studentsList);
 
-        public int Count =>
-            this.studentsList.Count;
+        public int Count => this.studentsList.Count;
 
-        public List<Student> GetCollection() { return this.studentsList; }
+        public List<Student> GetCollection { get => this.studentsList; }
 
         public void SortByFacultyNumber() =>
             this.studentsList.Sort();

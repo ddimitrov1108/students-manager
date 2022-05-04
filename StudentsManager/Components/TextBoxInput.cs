@@ -10,7 +10,7 @@ namespace StudentsManager.Components
         public TextBoxInput() : base()
         {
             this.textInput = new TextBox();
-            this.textInput.Font = new Font("Poppins", 12);
+            this.textInput.Font = new Font("Poppins", 11);
             this.textInput.ForeColor = ColorCollection.Black;
             this.textInput.MaxLength = 20;
             this.textInput.BorderStyle = BorderStyle.None;

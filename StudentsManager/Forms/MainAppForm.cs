@@ -47,7 +47,7 @@ namespace StudentsManager.Forms
         {
             this.StudentsDataGrid.DataSource = null;
             this.studentsCollection.SortByFacultyNumber();
-            this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection();
+            this.StudentsDataGrid.DataSource = this.studentsCollection.GetCollection;
             this.UpdateDataGridInfo();
             this.SetDataGridSettings();
         }
@@ -105,7 +105,6 @@ namespace StudentsManager.Forms
             {
                 if(new Regex(@"^\d+$").IsMatch(this.FromFacultyNumberInput.Value) && new Regex(@"^\d+$").IsMatch(this.ToFacultyNumberInput.Value))
                 {
-                    MessageBox.Show("Test");
                     this.StudentsDataGrid.DataSource = this.studentsCollection.SearchByFacultyNumber(
                         this.FromFacultyNumberInput.Value,
                         this.ToFacultyNumberInput.Value

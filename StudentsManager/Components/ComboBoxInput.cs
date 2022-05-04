@@ -12,7 +12,7 @@ namespace StudentsManager.Components
             this.comboInput = new ComboBox();
             this.comboInput.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboInput.FlatStyle = FlatStyle.Flat;
-            this.comboInput.Font = new Font("Poppins", 10);
+            this.comboInput.Font = new Font("Poppins", 11);
             this.comboInput.ForeColor = ColorCollection.Black;
             this.comboInput.Dock = DockStyle.Fill;
             this.comboInput.GotFocus += new EventHandler((s, e) => base.PaintSelectedColorType());
