@@ -68,7 +68,6 @@ namespace StudentsManager.Classes
         {
             try
             {
-                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
@@ -102,12 +101,10 @@ namespace StudentsManager.Classes
                             ));
                         }
 
-                        Program.dbConnection.Close();
                         dataReader.Close();
                         return 1;
                     }
 
-                    Program.dbConnection.Close();
                     dataReader.Close();
                     return 0;
                 }
@@ -115,7 +112,6 @@ namespace StudentsManager.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
                 return 0;
             }
         }

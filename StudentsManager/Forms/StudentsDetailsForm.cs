@@ -23,7 +23,6 @@ namespace StudentsManager.Forms
 
             try
             {
-                Program.dbConnection.Open();
 
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
@@ -37,12 +36,11 @@ namespace StudentsManager.Forms
                     this.EduFormCombo.SetListItems(ProccessComboBoxData(cmd.ExecuteReader(), "form"));
                 }
 
-                Program.dbConnection.Close();
+                
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
             }
 
             if (edit == 1)
@@ -113,7 +111,6 @@ namespace StudentsManager.Forms
             {
                 this.StudentsDetailsBtn.Click += new EventHandler((s, e) =>
                 {
-                    Program.dbConnection.Open();
                     bool doesRecordExists = false;
 
                     using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
@@ -127,8 +124,6 @@ namespace StudentsManager.Forms
 
                         dataReader.Close();
                     }
-
-                    Program.dbConnection.Close();
 
                     if(doesRecordExists)
                     {

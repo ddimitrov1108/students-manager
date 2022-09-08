@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj": {}
+    "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj": {
+    "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
         "projectName": "StudentsManager",
-        "projectPath": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
-        "packagesPath": "C:\\Users\\ddimi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ddimi\\Desktop\\students_manager\\StudentsManager\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\StudentsManager.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\students_manager\\StudentsManager\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ddimi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -63,7 +63,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -75,7 +76,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

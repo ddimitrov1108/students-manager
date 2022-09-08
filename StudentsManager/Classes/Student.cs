@@ -94,7 +94,6 @@ namespace StudentsManager.Classes
         {
             try
             {
-                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText = "INSERT INTO students VALUES(null, ?facNum, ?fn, ?ln, ?phn, ?dtid, ?snid, ?ftid, ?year, ?gpa, DEFAULT, DEFAULT)";
@@ -112,14 +111,12 @@ namespace StudentsManager.Classes
                     });
 
                     int result = cmd.ExecuteNonQuery();
-                    Program.dbConnection.Close();
                     return result;
                 }
             }
             catch (MySqlException ex)
             {
                  MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
                 return 0;
             }
         }
@@ -128,7 +125,6 @@ namespace StudentsManager.Classes
         {
             try
             {
-                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
@@ -156,12 +152,10 @@ namespace StudentsManager.Classes
                         this.formType = dataReader.GetString("form");
                         this.year = dataReader.GetInt32("year");
                         this.gpa = dataReader.GetDouble("gpa");
-                        Program.dbConnection.Close();
                         dataReader.Close();
                         return 1;
                     }
 
-                    Program.dbConnection.Close();
                     dataReader.Close();
                     return 0;
                 } 
@@ -169,7 +163,6 @@ namespace StudentsManager.Classes
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
                 return 0;
             }
         }
@@ -178,7 +171,6 @@ namespace StudentsManager.Classes
         {
             try
             {
-                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText =
@@ -208,14 +200,12 @@ namespace StudentsManager.Classes
                     });
 
                     int result = cmd.ExecuteNonQuery();
-                    Program.dbConnection.Close();
                     return result;
                 }
             }
             catch(MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
                 return 0;
             }
         }
@@ -224,7 +214,6 @@ namespace StudentsManager.Classes
         {
             try
             {
-                Program.dbConnection.Open();
                 using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM students WHERE facultyNumber = ?facNum AND firstName = ?fn AND lastName = ?ln LIMIT 1";
@@ -236,14 +225,12 @@ namespace StudentsManager.Classes
                     });
 
                     int result = cmd.ExecuteNonQuery();
-                    Program.dbConnection.Close();
                     return result;
                 }
             }
             catch(MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Program.dbConnection.Close();
                 return 0;
             }
         }

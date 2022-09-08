@@ -25,7 +25,6 @@ namespace StudentsManager
             try
             {
                 Program.dbConnection.Open();
-                Program.dbConnection.Close();
             }
             catch (MySqlException ex)
             {

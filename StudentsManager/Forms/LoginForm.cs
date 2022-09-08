@@ -21,7 +21,6 @@ namespace StudentsManager.Forms
                 {
                     try
                     {
-                        Program.dbConnection.Open();
                         using (MySqlCommand cmd = Program.dbConnection.CreateCommand())
                         {
                             cmd.CommandText = "SELECT * FROM users WHERE email = ?email LIMIT 1";
@@ -45,7 +44,6 @@ namespace StudentsManager.Forms
                                     );
 
                                     dataReader.Close();
-                                    Program.dbConnection.Close();
                                     new MainAppForm(user).Visible = true;
                                 }
                                 else
@@ -65,13 +63,10 @@ namespace StudentsManager.Forms
 
                             dataReader.Close();
                         }
-
-                        Program.dbConnection.Close();
                     }
                     catch (MySqlException ex)
                     {
                         MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        Program.dbConnection.Close();
                     }
                 }
                 else
