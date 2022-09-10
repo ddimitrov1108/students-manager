@@ -25,17 +25,16 @@ namespace StudentsManager
             try
             {
                 Program.dbConnection.Open();
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+                Application.Run(new LoginForm());
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-                Application.Run(new LoginForm());
         }
     }
 }
